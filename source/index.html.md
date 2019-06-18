@@ -5,7 +5,6 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - json
 
 toc_footers:
-  - <a href='#'>Cadastre-se para obter acesso a API</a>
 
 includes:
   - errors
