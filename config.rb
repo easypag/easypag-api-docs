@@ -15,7 +15,7 @@ set :markdown,
     renderer: UniqueHeadCounter
     
 #Build dir
-set :build_dir, 'docs'
+set :build_dir, 'public'
 
 # Assets
 set :css_dir, 'stylesheets'
