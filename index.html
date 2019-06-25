@@ -287,6 +287,9 @@
             <a href="#cobrancas" class="toc-h1 toc-link" data-title="Cobranças">Cobranças</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#status-de-cobranca" class="toc-h2 toc-link" data-title="Status de Cobrança">Status de Cobrança</a>
+                  </li>
+                  <li>
                     <a href="#listar-todas-as-cobrancas" class="toc-h2 toc-link" data-title="Listar todas as cobranças">Listar todas as cobranças</a>
                   </li>
                   <li>
@@ -341,6 +344,9 @@
             <a href="#resgates" class="toc-h1 toc-link" data-title="Resgates">Resgates</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#status-de-resgate" class="toc-h2 toc-link" data-title="Status de Resgate">Status de Resgate</a>
+                  </li>
+                  <li>
                     <a href="#listar-todos-os-resgates" class="toc-h2 toc-link" data-title="Listar todos os resgates">Listar todos os resgates</a>
                   </li>
                   <li>
@@ -362,6 +368,9 @@
           <li>
             <a href="#extratos" class="toc-h1 toc-link" data-title="Extratos">Extratos</a>
               <ul class="toc-list-h2">
+                  <li>
+                    <a href="#tipos-de-transacao" class="toc-h2 toc-link" data-title="Tipos de Transação">Tipos de Transação</a>
+                  </li>
                   <li>
                     <a href="#listar-extratos" class="toc-h2 toc-link" data-title="Listar Extratos">Listar Extratos</a>
                   </li>
@@ -773,58 +782,136 @@ Você pode informar apenas os parâmetros que deseja atualizar.
 <p>Resposta</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">Ok</span>
-</code></pre><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"03f7f73f-617d-4d4d-845a-7d464a7d8011"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"João Silva"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"joao@email.com"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"551199999999"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"doc"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cpf"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"64223737830"</span><span class="w">
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bb3fef04-64d9-429e-820f-49efca3b9c35"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"João da Silva"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ref0002"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"joao@email.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5511988515697"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"doc"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cpf"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"29458917000"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"cep"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60135222"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"uf"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CE"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fortaleza"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"area"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dionísio Torres"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rua Marcondes Pereira"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"addressLine2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Prox dionísio Torres"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"streetNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1381"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-20T14:25:58.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-20T14:25:58.000Z"</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"cep"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01014902"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"uf"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SP"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"São Paulo"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"area"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bela Vista"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Avenida Paulista"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"addressLine2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sala 9999"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"streetNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9999"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-01T15:29:36.020Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-01T15:29:36.020Z"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"46dfd9f0-0fe7-460f-8631-0cc30cb05b8a"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Maria Assessoria Jurídica Ltda"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ref0001"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"maria@email.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"551625392136"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"doc"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cnpj"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"70384052000194"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"cep"</span><span class="p">:</span><span class="w"> </span><span class="s2">"29113740"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"uf"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ES"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Vila Velha"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"area"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Santa Clara"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rua Santa Lúcia"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"addressLine2"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"streetNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9999"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-10T21:55:40.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-10T21:55:40.000Z"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Este endpoint lista todos os clientes.</p>
 <h3 id='requisicao-http-6'>Requisição HTTP</h3>
 <p><code>GET https://sandbox.easypagamentos.com.br/api/v1/customers</code></p>
+<h3 id='parametros-query'>Parâmetros Query</h3>
+<table><thead>
+<tr>
+<th>Parâmetro</th>
+<th>Descrição</th>
+<th>Obrigatório</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>page</td>
+<td>Número da página a ser retornada</td>
+<td>Não</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>Número itens a ser retornado por página. Valor mínimo: 1, valor máximo: 100. Caso não seja infromado, será aplicado o valor default de 100 itens</td>
+<td>Não</td>
+</tr>
+<tr>
+<td>search</td>
+<td>Parâmetro que recebe texto e efetua pesquisa nos campos de nome, email e referência do cliente</td>
+<td>Não</td>
+</tr>
+<tr>
+<td>docNumber</td>
+<td>Parâmetro que busca cliente a partir do cpf/cnpj. Pode ser informado com ou sem máscara.</td>
+<td>Não</td>
+</tr>
+<tr>
+<td>sortBy</td>
+<td>Um hash contendo na chave, o nome do campo para ordenação e o valor DESC ou ASC para descendente e ascendente, respectivamente. Exemplos: sortBy[name]=ASC, sortBy[createdAt]=ASC, sortBy[updatedAt]=DESC</td>
+<td>Não</td>
+</tr>
+<tr>
+<td>createdAtFrom</td>
+<td>Filtra registros criados a partir da data passada no parâmetro. Formato (AAAA-MM-DDThh:mm:ss)</td>
+<td>Não</td>
+</tr>
+<tr>
+<td>createdAtTo</td>
+<td>Filtra registros criados até esta data passada no parâmetro. Formato (AAAA-MM-DDThh:mm:ss)</td>
+<td>Não</td>
+</tr>
+<tr>
+<td>updatedSince</td>
+<td>Filtra registros atualizados desde o valor passado no parâmetro. Formato (AAAA-MM-DDThh:mm:ss)</td>
+<td>Não</td>
+</tr>
+</tbody></table>
 <h2 id='listar-um-cliente'>Listar um cliente</h2>
 <blockquote>
 <p>Resposta</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">Ok</span>
 </code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"03f7f73f-617d-4d4d-845a-7d464a7d8011"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"João Silva"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"joao@email.com"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"551199999999"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"46dfd9f0-0fe7-460f-8631-0cc30cb05b8a"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Maria Assessoria Jurídica Ltda"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ref0001"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"maria@email.com"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"551625392136"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"doc"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cpf"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"64223737830"</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cnpj"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"70384052000194"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"cep"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01014902"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"uf"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SP"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"São Paulo"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"area"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bela Vista"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Avenida Paulista"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"addressLine2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sala 9999"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cep"</span><span class="p">:</span><span class="w"> </span><span class="s2">"29113740"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"uf"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ES"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Vila Velha"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"area"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Santa Clara"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rua Santa Lúcia"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"addressLine2"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"streetNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9999"</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-01T15:29:36.020Z"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-01T15:29:36.020Z"</span><span class="w">
+  </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-10T21:55:40.000Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-10T21:55:40.000Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Este endpoint lista um cliente especificado.</p>
@@ -849,18 +936,19 @@ Você pode informar apenas os parâmetros que deseja atualizar.
 <p>Requisição</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"João Silva"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"João da Silva"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ref0002"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"joao@email.com"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"551199999999"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"docNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"64223737830"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5511988515697"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"docNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"29458917000"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"cep"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01014902"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"uf"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SP"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"São Paulo"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"area"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bela Vista"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Avenida Paulista"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"addressLine2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sala 9999"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"streetNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9999"</span><span class="w">
+    </span><span class="s2">"cep"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60135222"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"uf"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CE"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fortaleza"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"area"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dionísio Torres"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rua Marcondes Pereira"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"addressLine2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Prox dionísio Torres"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"streetNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1381"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -869,25 +957,26 @@ Você pode informar apenas os parâmetros que deseja atualizar.
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">201</span> <span class="ne">Created</span>
 </code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"03f7f73f-617d-4d4d-845a-7d464a7d8011"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"João Silva"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"acb900d5-0007-4823-93c2-10d5694a2d31"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"João da Silva"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ref0002"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"joao@email.com"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"551199999999"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5585996791915"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"doc"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cpf"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"64223737830"</span><span class="w">
+    </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"29458917000"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"cep"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60135222"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"uf"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SP"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"São Paulo"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"area"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bela Vista"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Avenida Paulista"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"addressLine2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sala 9999"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"streetNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9999"</span><span class="w">
+    </span><span class="s2">"uf"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CE"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fortaleza"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"area"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dionísio Torres"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rua Marcondes Pereira"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"addressLine2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Prox dionísio Torres"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"streetNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1381"</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-01T15:29:36.020Z"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-01T15:29:36.020Z"</span><span class="w">
+  </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-22T14:11:51.246Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-22T14:11:51.246Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Este endpoint cria um cliente.</p>
@@ -995,25 +1084,26 @@ Você pode informar apenas os parâmetros que deseja atualizar.
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">Ok</span>
 </code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"03f7f73f-617d-4d4d-845a-7d464a7d8011"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"João Silva"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"acb900d5-0007-4823-93c2-10d5694a2d31"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"João da Silva"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ref0002"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"joao2@email.com"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5511888888888"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"doc"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cpf"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"64223737830"</span><span class="w">
+    </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"29458917000"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"cep"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01014902"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"uf"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SP"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"São Paulo"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"area"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bela Vista"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Avenida Paulista"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"addressLine2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sala 9999"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"streetNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9999"</span><span class="w">
+    </span><span class="s2">"cep"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60135222"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"uf"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CE"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fortaleza"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"area"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dionísio Torres"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rua Marcondes Pereira"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"addressLine2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Prox dionísio Torres"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"streetNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1381"</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-01T15:29:36.020Z"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-01T15:29:36.020Z"</span><span class="w">
+  </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-22T14:11:51.000Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-22T14:15:42.000Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Este endpoint edita um cliente.</p>
@@ -1148,127 +1238,319 @@ Você pode informar apenas os parâmetros que deseja atualizar.
 <td>Sim</td>
 </tr>
 </tbody></table>
-<h1 id='cobrancas'>Cobranças</h1><h2 id='listar-todas-as-cobrancas'>Listar todas as cobranças</h2>
+<h1 id='cobrancas'>Cobranças</h1><h2 id='status-de-cobranca'>Status de Cobrança</h2>
+<p>O parâmetro <code>payment.status</code>, retornado no objeto de resposta, contém o status do pagamento da cobrança.</p>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>1</td>
+<td>Aguardando pagamento</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Cobrança paga</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Cobrança manualmente marcada como paga</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Cobrança atrasada</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Cobrança cancelada pelo usuário</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Cobrança expirada</td>
+</tr>
+</tbody></table>
+<h2 id='listar-todas-as-cobrancas'>Listar todas as cobranças</h2>
 <blockquote>
 <p>Resposta</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">Ok</span>
-</code></pre><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"31da8d81-f0a6-4c9b-a120-0ccf12f96fab"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"dueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-07-05"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"paidAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4c467d85-de18-4566-946e-d36c7fc8ee36"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Item de Test - 1"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"invoiceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"31da8d81-f0a6-4c9b-a120-0ccf12f96fab"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-01T15:51:40.175Z"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-01T15:51:40.175Z"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d3ec69fb-df58-4706-a552-19522a8b0f63"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Item de Test - 2"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"invoiceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"31da8d81-f0a6-4c9b-a120-0ccf12f96fab"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-01T15:51:40.177Z"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-01T15:51:40.177Z"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b9e00954-e12e-49ad-b6ea-cc1707dfad3d"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Item de Test - 3"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"invoiceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"31da8d81-f0a6-4c9b-a120-0ccf12f96fab"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-01T15:51:40.179Z"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-01T15:51:40.179Z"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"itemsDiscount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"earlyDiscount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"percentage"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.75</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"expiryDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-07-03"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"interest"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"percentage"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"fine"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"lateDays"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-07-12"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"percentage"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"João Silva"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"joao@email.com"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"551199999999"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"doc"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cpf"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"05913521331"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"cep"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01014902"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"uf"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SP"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"São Paulo"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"area"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bela Vista"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Avenida Paulista"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"addressLine2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sala 9999"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"streetNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9999"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"notifications"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"cc"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"usuario1@email.com"</span><span class="p">,</span><span class="w"> </span><span class="s2">"usuario2@email.com"</span><span class="p">]</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"sendOnCreate"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"reminders"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"before"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"send"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"days"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"08:00:00"</span><span class="w">
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"summary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">4999</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"paidAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d3a15b2f-2f34-4f8d-a8b2-089d4a073ad2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"dueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-07-06"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2999</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"paidAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"432512f6-6556-4bf6-ac4c-05d9f11d66de"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Item de Test-2"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-22T14:48:29.000Z"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-22T14:48:29.000Z"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"invoiceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d3a15b2f-2f34-4f8d-a8b2-089d4a073ad2"</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"after"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"send"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"days"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"08:00:00"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"recurrent"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b79b78ff-14a5-41bf-a32b-4613608a9de6"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Item de Test-1"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">999</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-22T14:48:29.000Z"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-22T14:48:29.000Z"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"invoiceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d3a15b2f-2f34-4f8d-a8b2-089d4a073ad2"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"earlyDiscount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"percentage"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"expiryDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-07-01"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"earlyDays"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"interest"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"percentage"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"fine"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"lateDays"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fineStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-07-09"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"percentage"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"João da Silva"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"joao2@email.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5511888888888"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"doc"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cpf"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"29458917000"</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"expiration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"send"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"08:00:00"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"overdue"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"send"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"cep"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60135222"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"uf"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CE"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fortaleza"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"area"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dionísio Torres"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rua Marcondes Pereira"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"addressLine2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Prox dionísio Torres"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"streetNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1381"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"types"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"sms"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"whatsapp"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-      </span><span class="p">}</span><span class="w">
+      </span><span class="s2">"notifications"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"sendOnCreate"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"reminders"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"cc"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"before"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"send"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"days"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10:00:00"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"after"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"send"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"days"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11:00:00"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"expiration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"send"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12:00:00"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"overdue"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"send"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"types"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"sms"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"whatsapp"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"instructionsMsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Teste de Instrução"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Teste de Observação"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"invoiceUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sandbox.easypagamentos.com.br/faturas"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aguardando pagamento"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"events"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bca8a3ed-54d0-49a7-8d12-bf66b3c7d8dd"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INVOICE.CREATED"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-22T14:48:29.000Z"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-22T14:48:29.000Z"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"invoiceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d3a15b2f-2f34-4f8d-a8b2-089d4a073ad2"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-22T14:48:29.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-22T14:48:29.000Z"</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"instructionsMsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Teste de Instrução"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Teste de Observação"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"boleto"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"digitableLine"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00190.00009 02625.444100 45000.820170 2 79410000002000"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"barCodeNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00192794100000020000000002625444104500082017"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"invoiceUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aguardando pagamento"</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"74691e6e-ceda-4e2f-88a3-1c08b2c86484"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"dueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-30"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"paidAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"25905bfc-2e6e-4b26-a944-9995de6332e5"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Item de Test-1"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-22T14:39:12.000Z"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-22T14:39:12.000Z"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"invoiceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"74691e6e-ceda-4e2f-88a3-1c08b2c86484"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"431f9699-e5e6-4b2a-bfa0-fba829cb09c5"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Item de Test-2"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-22T14:39:12.000Z"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-22T14:39:12.000Z"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"invoiceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"74691e6e-ceda-4e2f-88a3-1c08b2c86484"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Maria Assessoria Jurídica Ltda"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"maria@email.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"551625392136"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"doc"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cnpj"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"70384052000194"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"cep"</span><span class="p">:</span><span class="w"> </span><span class="s2">"29113740"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"uf"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ES"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Vila Velha"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"area"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Santa Clara"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rua Santa Lúcia"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"streetNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9999"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"notifications"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"sendOnCreate"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"reminders"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"cc"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"before"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"send"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"days"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10:00:00"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"after"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"send"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"days"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11:00:00"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"expiration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"send"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12:00:00"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"overdue"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"send"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"types"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"sms"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"whatsapp"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"instructionsMsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Teste de Instrução"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Teste de Observação"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"invoiceUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sandbox.easypagamentos.com.br/faturas"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aguardando pagamento"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"events"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18785c31-19d8-49d2-aab5-917e719fce38"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INVOICE.CREATED"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-22T14:39:12.000Z"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-22T14:39:12.000Z"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"invoiceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"74691e6e-ceda-4e2f-88a3-1c08b2c86484"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-22T14:39:12.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-22T14:39:12.000Z"</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Este endpoint lista todas as cobranças.</p>
 <h3 id='requisicao-http-11'>Requisição HTTP</h3>
 <p><code>GET https://sandbox.easypagamentos.com.br/api/v1/invoices</code></p>
+<h3 id='parametros-query-2'>Parâmetros Query</h3>
+<table><thead>
+<tr>
+<th>Parâmetro</th>
+<th>Descrição</th>
+<th>Obrigatório</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>page</td>
+<td>Número da página a ser retornada</td>
+<td>Não</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>Número itens a ser retornado por página. Valor mínimo: 1, valor máximo: 100. Caso não seja infromado, será aplicado o valor default de 100 itens</td>
+<td>Não</td>
+</tr>
+<tr>
+<td>search</td>
+<td>Parâmetro que recebe texto e efetua pesquisa nos campos de nome do cliente, email do cliente, cpf/cnpj do cliente, observações e referência da cobrança</td>
+<td>Não</td>
+</tr>
+<tr>
+<td>docNumber</td>
+<td>Parâmetro que filtra cobranças a partir de cpf/cnpj. Pode ser informado com ou sem máscara</td>
+<td>Não</td>
+</tr>
+<tr>
+<td>paymentStatus</td>
+<td>Parâmetro que filtra cobranças por um ou mais status de pagamento separados por vírgula</td>
+<td>Não</td>
+</tr>
+<tr>
+<td>sortBy</td>
+<td>Um hash contendo na chave, o nome do campo para ordenação e o valor DESC ou ASC para descendente e ascendente, respectivamente. Exemplos: sortBy[dueDate]=DESC, sortBy[amount]=DESC, sortBy[customerName]=ASC, sortBy[createdAt]=ASC, sortBy[updatedAt]=DESC</td>
+<td>Não</td>
+</tr>
+<tr>
+<td>createdAtFrom</td>
+<td>Filtra registros criados a partir da data passada no parâmetro. Formato (AAAA-MM-DDThh:mm:ss)</td>
+<td>Não</td>
+</tr>
+<tr>
+<td>createdAtTo</td>
+<td>Filtra registros criados até esta data passada no parâmetro. Formato (AAAA-MM-DDThh:mm:ss)</td>
+<td>Não</td>
+</tr>
+<tr>
+<td>updatedSince</td>
+<td>Filtra registros atualizados desde o valor passado no parâmetro. Formato (AAAA-MM-DDThh:mm:ss)</td>
+<td>Não</td>
+</tr>
+<tr>
+<td>paymentStatus</td>
+<td>Filtra registros que possuam os status de pagamento informados. Formato (Código status do pagamento. Caso seja mais de um status, separar por vírgula.) Exemplo: paymentStatus=1,2,3 ou paymentStatus=1</td>
+<td>Não</td>
+</tr>
+</tbody></table>
 <h2 id='listar-uma-cobranca'>Listar uma cobrança</h2>
 <blockquote>
 <p>Resposta</p>
@@ -1378,7 +1660,7 @@ Você pode informar apenas os parâmetros que deseja atualizar.
     </span><span class="s2">"digitableLine"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00190.00009 02625.444100 45000.820170 2 79410000002000"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"barCodeNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00192794100000020000000002625444104500082017"</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"invoiceUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"invoiceUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sandbox.easypagamentos.com.br/faturas"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aguardando pagamento"</span><span class="w">
@@ -1585,7 +1867,7 @@ Você pode informar apenas os parâmetros que deseja atualizar.
     </span><span class="s2">"digitableLine"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00190.00009 02625.444100 45000.820170 2 79410000002000"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"barCodeNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00192794100000020000000002625444104500082017"</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"invoiceUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"invoiceUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sandbox.easypagamentos.com.br/faturas"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aguardando pagamento"</span><span class="w">
@@ -2040,7 +2322,7 @@ Você pode informar apenas os parâmetros que deseja atualizar.
     </span><span class="s2">"digitableLine"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00190.00009 02625.444100 45000.822176 5 79410000002000"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"barCodeNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00195794100000020000000002625444104500082217"</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"invoiceUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"invoiceUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sandbox.easypagamentos.com.br/faturas"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aguardando pagamento"</span><span class="w">
@@ -2449,7 +2731,7 @@ Você pode informar apenas os parâmetros que deseja atualizar.
     </span><span class="s2">"digitableLine"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00190.00009 02625.444100 45000.805171 2 78910000002000"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"barCodeNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00192789100000020000000002625444104500080517"</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"invoiceUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"invoiceUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sandbox.easypagamentos.com.br/faturas"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aguardando pagamento"</span><span class="w">
@@ -2745,7 +3027,7 @@ Você pode informar apenas os parâmetros que deseja atualizar.
 <p>Este endpoint lista as informações das instituições financeiras disponíveis.</p>
 <h3 id='requisicao-http-19'>Requisição HTTP</h3>
 <p><code>GET https://sandbox.easypagamentos.com.br/api/v1/banks?search=banco do brasil</code></p>
-<h3 id='parametros-query'>Parâmetros Query</h3>
+<h3 id='parametros-query-3'>Parâmetros Query</h3>
 <table><thead>
 <tr>
 <th>Parâmetro</th>
@@ -2999,49 +3281,138 @@ Você pode informar apenas os parâmetros que deseja atualizar.
 <td>Sim</td>
 </tr>
 </tbody></table>
-<h1 id='resgates'>Resgates</h1><h2 id='listar-todos-os-resgates'>Listar todos os resgates</h2>
+<h1 id='resgates'>Resgates</h1><h2 id='status-de-resgate'>Status de Resgate</h2>
+<p>O parâmetro <code>status.code</code>, retornado no objeto de resposta, contém o status do resgate.</p>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>1</td>
+<td>Pedido de resgate efetuado</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Transferência bancária efetuada. Aguardando confirmação do banco de destino</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Pedido de resgate recusado. Por favor entre em contato com nosso suporte</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Pedido de resgate concluído com sucesso. O banco de destino confirmou o recebimento da transferência</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Pedido de resgate falhou. A transferência foi devolvida pelo banco de destino</td>
+</tr>
+</tbody></table>
+<h2 id='listar-todos-os-resgates'>Listar todos os resgates</h2>
 <blockquote>
 <p>Resposta</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">Ok</span>
-</code></pre><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2c486134-0e27-4c1c-a312-0fe468dae711"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"bankAccount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"beneficiary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"João Silva"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"doc"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cpf"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"64223737830"</span><span class="w">
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2c486134-0e27-4c1c-a312-0fe468dae711"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"bankAccount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"beneficiary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"João Silva"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"doc"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cpf"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"64223737830"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Banco do Brasil S.A."</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"bankCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"001"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"agency"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9999"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"digit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"999999"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"digit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"checking"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Banco do Brasil S.A."</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"bankCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"001"</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pedido de resgate recebido."</span><span class="w">
       </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"agency"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9999"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"digit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"999999"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"digit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"checking"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pedido de resgate recebido."</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-02T17:11:20.000Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-02T17:11:20.000Z"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-02T17:11:20.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-02T17:11:20.000Z"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Este endpoint lista todos os resgates do usuário.</p>
 <h3 id='requisicao-http-24'>Requisição HTTP</h3>
-<p><code>GET https://sandbox.easypagamentos.com.br/api/v1/bank-accounts</code></p>
+<p><code>GET https://sandbox.easypagamentos.com.br/api/v1/redemptions</code></p>
+<h3 id='parametros-query-4'>Parâmetros Query</h3>
+<table><thead>
+<tr>
+<th>Parâmetro</th>
+<th>Descrição</th>
+<th>Obrigatório</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>page</td>
+<td>Número da página a ser retornada</td>
+<td>Não</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>Número itens a ser retornado por página. Valor mínimo: 1, valor máximo: 100. Caso não seja infromado, será aplicado o valor default de 100 itens</td>
+<td>Não</td>
+</tr>
+<tr>
+<td>search</td>
+<td>Parâmetro que recebe texto e efetua pesquisa nos campos de nome do banco, nome do titular da conta, número da agência da conta, número da conta</td>
+<td>Não</td>
+</tr>
+<tr>
+<td>docNumber</td>
+<td>Parâmetro que filtra resgates a partir de cpf/cnpj do beneficiário. Pode ser informado com ou sem máscara</td>
+<td>Não</td>
+</tr>
+<tr>
+<td>status</td>
+<td>Parâmetro que filtra resgates por um ou mais status separados por vírgula</td>
+<td>Não</td>
+</tr>
+<tr>
+<td>sortBy</td>
+<td>Um hash contendo na chave, o nome do campo para ordenação e o valor DESC ou ASC para descendente e ascendente, respectivamente. Exemplos: sortBy[amount]=ASC, sortBy[approvedAt]=ASC, sortBy[createdAt]=ASC, sortBy[updatedAt]=DESC</td>
+<td>Não</td>
+</tr>
+<tr>
+<td>createdAtFrom</td>
+<td>Filtra registros criados a partir da data passada no parâmetro. Formato (AAAA-MM-DDThh:mm:ss)</td>
+<td>Não</td>
+</tr>
+<tr>
+<td>createdAtTo</td>
+<td>Filtra registros criados até esta data passada no parâmetro. Formato (AAAA-MM-DDThh:mm:ss)</td>
+<td>Não</td>
+</tr>
+<tr>
+<td>updatedSince</td>
+<td>Filtra registros atualizados desde o valor passado no parâmetro. Formato (AAAA-MM-DDThh:mm:ss)</td>
+<td>Não</td>
+</tr>
+</tbody></table>
 <h2 id='listar-um-resgate'>Listar um resgate</h2>
 <blockquote>
 <p>Resposta</p>
@@ -3199,146 +3570,65 @@ Você pode informar apenas os parâmetros que deseja atualizar.
 <p>Este endpoint lista os saldos do usuário.</p>
 <h3 id='requisicao-http-27'>Requisição HTTP</h3>
 <p><code>GET https://sandbox.easypagamentos.com.br/api/v1/balances</code></p>
-<h1 id='extratos'>Extratos</h1><h2 id='listar-extratos'>Listar Extratos</h2>
+<h1 id='extratos'>Extratos</h1><h2 id='tipos-de-transacao'>Tipos de Transação</h2>
+<p>O parâmetro <code>type</code>, retornado no objeto de resposta, contém o tipo de transação no extrato.</p>
+
+<table><thead>
+<tr>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>1</td>
+<td>Crédito de cobrança paga</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Valor de resgate solicitado</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Extorno de resgate solicitado</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Débito de taxa de recebimento por boleto</td>
+</tr>
+</tbody></table>
+<h2 id='listar-extratos'>Listar Extratos</h2>
 <blockquote>
 <p>Resposta</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">Ok</span>
-</code></pre><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fcb1a7ae-90fb-4e71-b8c6-b75160255760"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"previousAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"availableAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">600</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Extorno  de resgate solicitado"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"88d727e3-b4fc-4984-b847-f2259f28bc9f"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REDEMPTION"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-11T01:31:23.000Z"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c1351845-3079-41e9-9f3a-fb9b94c48fcd"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"previousAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">600</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"availableAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Resgate solicitado"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"043cf63a-1da7-441d-809f-a388eabd2738"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REDEMPTION"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-11T01:25:53.000Z"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6629a707-132e-4339-a060-b061ec8d1669"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">490</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"previousAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">110</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"availableAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">600</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Crédito de cobrança(s) paga(s)"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9142eca6-acc7-429f-82cf-67c3f1f5867c"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INVOICE"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-11T01:21:35.000Z"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c3dd8402-2ad6-4bc4-9981-4c51246ec59f"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">-290</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"previousAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"availableAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">110</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Débito de taxa de recebimento de boleto"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9142eca6-acc7-429f-82cf-67c3f1f5867c"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INVOICE"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-11T01:21:35.000Z"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"70f67ba7-c323-4425-b3aa-de2c4129590b"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">490</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"previousAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">-90</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"availableAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Crédito de cobrança(s) paga(s)"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9142eca6-acc7-429f-82cf-67c3f1f5867c"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INVOICE"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-11T01:19:41.000Z"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"76759858-55cd-4726-83c1-04b5bf546e07"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">-290</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"previousAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"availableAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">-90</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Débito de taxa de recebimento de boleto"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9142eca6-acc7-429f-82cf-67c3f1f5867c"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INVOICE"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-11T01:19:41.000Z"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12296685-3e2f-4ffe-b076-e017f8858d53"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">-290</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"previousAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"availableAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">-290</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Débito de taxa de recebimento de boleto"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9142eca6-acc7-429f-82cf-67c3f1f5867c"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INVOICE"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-11T01:19:21.000Z"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ab413fac-d3ee-4fca-a169-3fd1fea6f477"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">490</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"previousAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">-290</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"availableAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Crédito de cobrança(s) paga(s)"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9142eca6-acc7-429f-82cf-67c3f1f5867c"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INVOICE"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-11T01:19:21.000Z"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"134c09ae-9293-11e9-9611-73ceb10b2493"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"previousAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"availableAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2000</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Crédito de cobrança(s) paga(s)"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1cae37d7-8006-439b-9a07-2580d79569f2"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INVOICE"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-03-26T10:45:38.000Z"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Este endpoint lista os extratos do usuário.</p>
 <h3 id='requisicao-http-28'>Requisição HTTP</h3>
-<p><code>GET https://sandbox.easypagamentos.com.br/api/v1/statements?startDate=2019-04-02&amp;endDate=2019-04-30</code></p>
-<h3 id='parametros-query-2'>Parâmetros Query</h3>
+<p><code>GET https://sandbox.easypagamentos.com.br/api/v1/statements</code></p>
+<h3 id='parametros-query-5'>Parâmetros Query</h3>
 <table><thead>
 <tr>
 <th>Parâmetro</th>
@@ -3347,13 +3637,33 @@ Você pode informar apenas os parâmetros que deseja atualizar.
 </tr>
 </thead><tbody>
 <tr>
-<td>startDate</td>
-<td>Data inicial de referência em formato ISO: YYYY-MM-DD</td>
+<td>page</td>
+<td>Número da página a ser retornada</td>
 <td>Não</td>
 </tr>
 <tr>
-<td>endDate</td>
-<td>Data final de referência em formato ISO: YYYY-MM-DD</td>
+<td>limit</td>
+<td>Número itens a ser retornado por página. Valor mínimo: 1, valor máximo: 100. Caso não seja infromado, será aplicado o valor default de 100 itens</td>
+<td>Não</td>
+</tr>
+<tr>
+<td>type</td>
+<td>Filtra registros que possuam o tipo de transação informada. Formato (Código do tipo de transação. Caso seja mais de um tipo, separar por vírgula.) Exemplo: type=1,2,3 ou type=1</td>
+<td>Não</td>
+</tr>
+<tr>
+<td>sortBy</td>
+<td>Um hash contendo na chave, o nome do campo para ordenação e o valor DESC ou ASC para descendente e ascendente, respectivamente. Exemplos: sortBy[amount]=DESC, sortBy[createdAt]=ASC</td>
+<td>Não</td>
+</tr>
+<tr>
+<td>createdAtFrom</td>
+<td>Filtra registros criados a partir da data passada no parâmetro. Formato (AAAA-MM-DDThh:mm:ss)</td>
+<td>Não</td>
+</tr>
+<tr>
+<td>createdAtTo</td>
+<td>Filtra registros criados até esta data passada no parâmetro. Formato (AAAA-MM-DDThh:mm:ss)</td>
 <td>Não</td>
 </tr>
 </tbody></table>
@@ -3412,7 +3722,7 @@ Você pode informar apenas os parâmetros que deseja atualizar.
 <p>Este endpoint lista os saldos acumulados de cobranças.</p>
 <h3 id='requisicao-http-29'>Requisição HTTP</h3>
 <p><code>GET https://sandbox.easypagamentos.com.br/api/v1/reports/invoices/balances?startDate=2019-04-02&amp;endDate=2019-04-30</code></p>
-<h3 id='parametros-query-3'>Parâmetros Query</h3>
+<h3 id='parametros-query-6'>Parâmetros Query</h3>
 <table><thead>
 <tr>
 <th>Parâmetro</th>
