@@ -46,7 +46,7 @@ Os eventos são disparados via `POST` na url especificada na criação do webhoo
 | Evento                | Descrição                                                                                                              |
 | --------------------- | ---------------------------------------------------------------------------------------------------------------------- |
 | INVOICE.\*            | Todos os eventos das cobranças                                                                                         |
-| INVOICE.CREATED       | Notifica caso uma cobrança seja criada.                                                                                  |
+| INVOICE.CREATED       | Notifica caso uma cobrança seja criada.                                                                                |
 | INVOICE.STATUS_UPDATE | Notifica caso o status de pagamento de uma cobrança seja alterado para qualquer outro status.                          |
 | INVOICE.PAID          | Notifica caso o status de pagamento de uma cobrança seja alterado para `2`, que equivale a cobrança paga.              |
 | INVOICE.SETTLED       | Notifica caso o status de pagamento de uma cobrança seja alterado para `3`, que equivale a cobrança marcada como paga. |
@@ -344,29 +344,57 @@ HTTP/1.1 200 Ok
 ```
 
 ```json
-[
-  {
-    "id": "03f7f73f-617d-4d4d-845a-7d464a7d8011",
-    "name": "João Silva",
-    "email": "joao@email.com",
-    "phoneNumber": "551199999999",
-    "doc": {
-      "type": "cpf",
-      "number": "64223737830"
+{
+  "limit": 100,
+  "pages": 1,
+  "count": 2,
+  "results": [
+    {
+      "id": "bb3fef04-64d9-429e-820f-49efca3b9c35",
+      "name": "João da Silva",
+      "reference": "ref0002",
+      "email": "joao@email.com",
+      "phoneNumber": "5511988515697",
+      "doc": {
+        "type": "cpf",
+        "number": "29458917000"
+      },
+      "address": {
+        "cep": "60135222",
+        "uf": "CE",
+        "city": "Fortaleza",
+        "area": "Dionísio Torres",
+        "addressLine1": "Rua Marcondes Pereira",
+        "addressLine2": "Prox dionísio Torres",
+        "streetNumber": "1381"
+      },
+      "createdAt": "2019-06-20T14:25:58.000Z",
+      "updatedAt": "2019-06-20T14:25:58.000Z"
     },
-    "address": {
-      "cep": "01014902",
-      "uf": "SP",
-      "city": "São Paulo",
-      "area": "Bela Vista",
-      "addressLine1": "Avenida Paulista",
-      "addressLine2": "Sala 9999",
-      "streetNumber": "9999"
-    },
-    "createdAt": "2019-04-01T15:29:36.020Z",
-    "updatedAt": "2019-04-01T15:29:36.020Z"
-  }
-]
+    {
+      "id": "46dfd9f0-0fe7-460f-8631-0cc30cb05b8a",
+      "name": "Maria Assessoria Jurídica Ltda",
+      "reference": "ref0001",
+      "email": "maria@email.com",
+      "phoneNumber": "551625392136",
+      "doc": {
+        "type": "cnpj",
+        "number": "70384052000194"
+      },
+      "address": {
+        "cep": "29113740",
+        "uf": "ES",
+        "city": "Vila Velha",
+        "area": "Santa Clara",
+        "addressLine1": "Rua Santa Lúcia",
+        "addressLine2": null,
+        "streetNumber": "9999"
+      },
+      "createdAt": "2019-06-10T21:55:40.000Z",
+      "updatedAt": "2019-06-10T21:55:40.000Z"
+    }
+  ]
+}
 ```
 
 Este endpoint lista todos os clientes.
@@ -374,6 +402,19 @@ Este endpoint lista todos os clientes.
 ### Requisição HTTP
 
 `GET https://sandbox.easypagamentos.com.br/api/v1/customers`
+
+### Parâmetros Query
+
+| Parâmetro     | Descrição                                                                                                                                                                                                 | Obrigatório |
+| ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| page          | Número da página a ser retornada                                                                                                                                                                          | Não         |
+| limit         | Número itens a ser retornado por página. Valor mínimo: 1, valor máximo: 100. Caso não seja infromado, será aplicado o valor default de 100 itens                                                          | Não         |
+| search        | Parâmetro que recebe texto e efetua pesquisa nos campos de nome, email e referência do cliente                                                                                                            | Não         |
+| docNumber     | Parâmetro que busca cliente a partir do cpf/cnpj. Pode ser informado com ou sem máscara.                                                                                                                  | Não         |
+| sortBy        | Um hash contendo na chave, o nome do campo para ordenação e o valor DESC ou ASC para descendente e ascendente, respectivamente. Exemplos: sortBy[name]=ASC, sortBy[createdAt]=ASC, sortBy[updatedAt]=DESC | Não         |
+| createdAtFrom | Filtra registros criados a partir da data passada no parâmetro. Formato (AAAA-MM-DDThh:mm:ss)                                                                                                             | Não         |
+| createdAtTo   | Filtra registros criados até esta data passada no parâmetro. Formato (AAAA-MM-DDThh:mm:ss)                                                                                                                | Não         |
+| updatedSince  | Filtra registros atualizados desde o valor passado no parâmetro. Formato (AAAA-MM-DDThh:mm:ss)                                                                                                            | Não         |
 
 ## Listar um cliente
 
@@ -385,25 +426,26 @@ HTTP/1.1 200 Ok
 
 ```json
 {
-  "id": "03f7f73f-617d-4d4d-845a-7d464a7d8011",
-  "name": "João Silva",
-  "email": "joao@email.com",
-  "phoneNumber": "551199999999",
+  "id": "46dfd9f0-0fe7-460f-8631-0cc30cb05b8a",
+  "name": "Maria Assessoria Jurídica Ltda",
+  "reference": "ref0001",
+  "email": "maria@email.com",
+  "phoneNumber": "551625392136",
   "doc": {
-    "type": "cpf",
-    "number": "64223737830"
+    "type": "cnpj",
+    "number": "70384052000194"
   },
   "address": {
-    "cep": "01014902",
-    "uf": "SP",
-    "city": "São Paulo",
-    "area": "Bela Vista",
-    "addressLine1": "Avenida Paulista",
-    "addressLine2": "Sala 9999",
+    "cep": "29113740",
+    "uf": "ES",
+    "city": "Vila Velha",
+    "area": "Santa Clara",
+    "addressLine1": "Rua Santa Lúcia",
+    "addressLine2": null,
     "streetNumber": "9999"
   },
-  "createdAt": "2019-04-01T15:29:36.020Z",
-  "updatedAt": "2019-04-01T15:29:36.020Z"
+  "createdAt": "2019-06-10T21:55:40.000Z",
+  "updatedAt": "2019-06-10T21:55:40.000Z"
 }
 ```
 
@@ -425,18 +467,19 @@ Este endpoint lista um cliente especificado.
 
 ```json
 {
-  "name": "João Silva",
+  "name": "João da Silva",
+  "reference": "ref0002",
   "email": "joao@email.com",
-  "phoneNumber": "551199999999",
-  "docNumber": "64223737830",
+  "phoneNumber": "5511988515697",
+  "docNumber": "29458917000",
   "address": {
-    "cep": "01014902",
-    "uf": "SP",
-    "city": "São Paulo",
-    "area": "Bela Vista",
-    "addressLine1": "Avenida Paulista",
-    "addressLine2": "Sala 9999",
-    "streetNumber": "9999"
+    "cep": "60135222",
+    "uf": "CE",
+    "city": "Fortaleza",
+    "area": "Dionísio Torres",
+    "addressLine1": "Rua Marcondes Pereira",
+    "addressLine2": "Prox dionísio Torres",
+    "streetNumber": "1381"
   }
 }
 ```
@@ -449,25 +492,26 @@ HTTP/1.1 201 Created
 
 ```json
 {
-  "id": "03f7f73f-617d-4d4d-845a-7d464a7d8011",
-  "name": "João Silva",
+  "id": "acb900d5-0007-4823-93c2-10d5694a2d31",
+  "name": "João da Silva",
+  "reference": "ref0002",
   "email": "joao@email.com",
-  "phoneNumber": "551199999999",
+  "phoneNumber": "5585996791915",
   "doc": {
     "type": "cpf",
-    "number": "64223737830"
+    "number": "29458917000"
   },
   "address": {
     "cep": "60135222",
-    "uf": "SP",
-    "city": "São Paulo",
-    "area": "Bela Vista",
-    "addressLine1": "Avenida Paulista",
-    "addressLine2": "Sala 9999",
-    "streetNumber": "9999"
+    "uf": "CE",
+    "city": "Fortaleza",
+    "area": "Dionísio Torres",
+    "addressLine1": "Rua Marcondes Pereira",
+    "addressLine2": "Prox dionísio Torres",
+    "streetNumber": "1381"
   },
-  "createdAt": "2019-04-01T15:29:36.020Z",
-  "updatedAt": "2019-04-01T15:29:36.020Z"
+  "createdAt": "2019-06-22T14:11:51.246Z",
+  "updatedAt": "2019-06-22T14:11:51.246Z"
 }
 ```
 
@@ -514,25 +558,26 @@ HTTP/1.1 200 Ok
 
 ```json
 {
-  "id": "03f7f73f-617d-4d4d-845a-7d464a7d8011",
-  "name": "João Silva",
+  "id": "acb900d5-0007-4823-93c2-10d5694a2d31",
+  "name": "João da Silva",
+  "reference": "ref0002",
   "email": "joao2@email.com",
   "phoneNumber": "5511888888888",
   "doc": {
     "type": "cpf",
-    "number": "64223737830"
+    "number": "29458917000"
   },
   "address": {
-    "cep": "01014902",
-    "uf": "SP",
-    "city": "São Paulo",
-    "area": "Bela Vista",
-    "addressLine1": "Avenida Paulista",
-    "addressLine2": "Sala 9999",
-    "streetNumber": "9999"
+    "cep": "60135222",
+    "uf": "CE",
+    "city": "Fortaleza",
+    "area": "Dionísio Torres",
+    "addressLine1": "Rua Marcondes Pereira",
+    "addressLine2": "Prox dionísio Torres",
+    "streetNumber": "1381"
   },
-  "createdAt": "2019-04-01T15:29:36.020Z",
-  "updatedAt": "2019-04-01T15:29:36.020Z"
+  "createdAt": "2019-06-22T14:11:51.000Z",
+  "updatedAt": "2019-06-22T14:15:42.000Z"
 }
 ```
 
@@ -592,6 +637,19 @@ Este endpoint deleta um cliente especificado.
 
 # Cobranças
 
+## Status de Cobrança
+
+O parâmetro `payment.status`, retornado no objeto de resposta, contém o status do pagamento da cobrança.
+
+| Status | Descrição                              |
+| ------ | -------------------------------------- |
+| 1      | Aguardando pagamento                   |
+| 2      | Cobrança paga                          |
+| 3      | Cobrança manualmente marcada como paga |
+| 4      | Cobrança atrasada                      |
+| 5      | Cobrança cancelada pelo usuário        |
+| 6      | Cobrança expirada                      |
+
 ## Listar todas as cobranças
 
 > Resposta
@@ -601,118 +659,217 @@ HTTP/1.1 200 Ok
 ```
 
 ```json
-[
-  {
-    "id": "31da8d81-f0a6-4c9b-a120-0ccf12f96fab",
-    "dueDate": "2019-07-05",
-    "amount": 2000,
-    "paidAmount": 0,
-    "currency": "BRL",
-    "items": [
-      {
-        "id": "4c467d85-de18-4566-946e-d36c7fc8ee36",
-        "description": "Item de Test - 1",
-        "quantity": 1,
-        "price": 1000,
-        "invoiceId": "31da8d81-f0a6-4c9b-a120-0ccf12f96fab",
-        "updatedAt": "2019-04-01T15:51:40.175Z",
-        "createdAt": "2019-04-01T15:51:40.175Z"
-      },
-      {
-        "id": "d3ec69fb-df58-4706-a552-19522a8b0f63",
-        "description": "Item de Test - 2",
-        "quantity": 1,
-        "price": 1000,
-        "invoiceId": "31da8d81-f0a6-4c9b-a120-0ccf12f96fab",
-        "updatedAt": "2019-04-01T15:51:40.177Z",
-        "createdAt": "2019-04-01T15:51:40.177Z"
-      },
-      {
-        "id": "b9e00954-e12e-49ad-b6ea-cc1707dfad3d",
-        "description": "Item de Test - 3",
-        "quantity": 1,
-        "price": 1000,
-        "invoiceId": "31da8d81-f0a6-4c9b-a120-0ccf12f96fab",
-        "updatedAt": "2019-04-01T15:51:40.179Z",
-        "createdAt": "2019-04-01T15:51:40.179Z"
-      }
-    ],
-    "itemsDiscount": {
-      "amount": 1000
-    },
-    "earlyDiscount": {
-      "percentage": 4.75,
-      "expiryDate": "2019-07-03"
-    },
-    "interest": {
-      "percentage": 1
-    },
-    "fine": {
-      "lateDays": "2019-07-12",
-      "percentage": 5
-    },
-    "customer": {
-      "name": "João Silva",
-      "email": "joao@email.com",
-      "phoneNumber": "551199999999",
-      "doc": {
-        "type": "cpf",
-        "number": "05913521331"
-      },
-      "address": {
-        "cep": "01014902",
-        "uf": "SP",
-        "city": "São Paulo",
-        "area": "Bela Vista",
-        "addressLine1": "Avenida Paulista",
-        "addressLine2": "Sala 9999",
-        "streetNumber": "9999"
-      }
-    },
-    "notifications": {
-      "cc": {
-        "emails": ["usuario1@email.com", "usuario2@email.com"]
-      },
-      "sendOnCreate": true,
-      "reminders": {
-        "before": {
-          "send": true,
-          "days": 1,
-          "time": "08:00:00"
+{
+  "limit": 100,
+  "pages": 1,
+  "count": 2,
+  "summary": {
+    "amount": 4999,
+    "paidAmount": 0
+  },
+  "results": [
+    {
+      "id": "d3a15b2f-2f34-4f8d-a8b2-089d4a073ad2",
+      "reference": null,
+      "dueDate": "2019-07-06",
+      "amount": 2999,
+      "paidAmount": 0,
+      "currency": "BRL",
+      "items": [
+        {
+          "id": "432512f6-6556-4bf6-ac4c-05d9f11d66de",
+          "description": "Item de Test-2",
+          "quantity": 1,
+          "price": 2000,
+          "createdAt": "2019-06-22T14:48:29.000Z",
+          "updatedAt": "2019-06-22T14:48:29.000Z",
+          "invoiceId": "d3a15b2f-2f34-4f8d-a8b2-089d4a073ad2"
         },
-        "after": {
-          "send": true,
-          "days": 2,
-          "time": "08:00:00",
-          "recurrent": false
+        {
+          "id": "b79b78ff-14a5-41bf-a32b-4613608a9de6",
+          "description": "Item de Test-1",
+          "quantity": 1,
+          "price": 999,
+          "createdAt": "2019-06-22T14:48:29.000Z",
+          "updatedAt": "2019-06-22T14:48:29.000Z",
+          "invoiceId": "d3a15b2f-2f34-4f8d-a8b2-089d4a073ad2"
+        }
+      ],
+      "earlyDiscount": {
+        "percentage": 10,
+        "expiryDate": "2019-07-01",
+        "earlyDays": 5
+      },
+      "interest": {
+        "percentage": 1
+      },
+      "fine": {
+        "lateDays": 3,
+        "fineStartDate": "2019-07-09",
+        "percentage": 2
+      },
+      "customer": {
+        "name": "João da Silva",
+        "email": "joao2@email.com",
+        "phoneNumber": "5511888888888",
+        "doc": {
+          "type": "cpf",
+          "number": "29458917000"
         },
-        "expiration": {
-          "send": true,
-          "time": "08:00:00"
-        },
-        "overdue": {
-          "send": true
+        "address": {
+          "cep": "60135222",
+          "uf": "CE",
+          "city": "Fortaleza",
+          "area": "Dionísio Torres",
+          "addressLine1": "Rua Marcondes Pereira",
+          "addressLine2": "Prox dionísio Torres",
+          "streetNumber": "1381"
         }
       },
-      "types": {
-        "email": true,
-        "sms": false,
-        "whatsapp": false
-      }
+      "notifications": {
+        "sendOnCreate": false,
+        "reminders": {
+          "cc": {
+            "emails": []
+          },
+          "before": {
+            "send": false,
+            "days": 3,
+            "time": "10:00:00"
+          },
+          "after": {
+            "send": false,
+            "days": "5",
+            "time": "11:00:00"
+          },
+          "expiration": {
+            "send": false,
+            "time": "12:00:00"
+          },
+          "overdue": {
+            "send": false
+          }
+        },
+        "types": {
+          "email": true,
+          "sms": false,
+          "whatsapp": false
+        }
+      },
+      "instructionsMsg": "Teste de Instrução",
+      "notes": "Teste de Observação",
+      "invoiceUrl": "https://sandbox.easypagamentos.com.br/faturas",
+      "payment": {
+        "status": "1",
+        "description": "Aguardando pagamento"
+      },
+      "events": [
+        {
+          "id": "bca8a3ed-54d0-49a7-8d12-bf66b3c7d8dd",
+          "type": "INVOICE.CREATED",
+          "createdAt": "2019-06-22T14:48:29.000Z",
+          "updatedAt": "2019-06-22T14:48:29.000Z",
+          "invoiceId": "d3a15b2f-2f34-4f8d-a8b2-089d4a073ad2"
+        }
+      ],
+      "createdAt": "2019-06-22T14:48:29.000Z",
+      "updatedAt": "2019-06-22T14:48:29.000Z"
     },
-    "instructionsMsg": "Teste de Instrução",
-    "notes": "Teste de Observação",
-    "boleto": {
-      "digitableLine": "00190.00009 02625.444100 45000.820170 2 79410000002000",
-      "barCodeNumber": "00192794100000020000000002625444104500082017"
-    },
-    "invoiceUrl": "http://localhost:5000",
-    "payment": {
-      "status": "1",
-      "description": "Aguardando pagamento"
+    {
+      "id": "74691e6e-ceda-4e2f-88a3-1c08b2c86484",
+      "reference": null,
+      "dueDate": "2019-06-30",
+      "amount": 2000,
+      "paidAmount": 0,
+      "currency": "BRL",
+      "items": [
+        {
+          "id": "25905bfc-2e6e-4b26-a944-9995de6332e5",
+          "description": "Item de Test-1",
+          "quantity": 1,
+          "price": 1000,
+          "createdAt": "2019-06-22T14:39:12.000Z",
+          "updatedAt": "2019-06-22T14:39:12.000Z",
+          "invoiceId": "74691e6e-ceda-4e2f-88a3-1c08b2c86484"
+        },
+        {
+          "id": "431f9699-e5e6-4b2a-bfa0-fba829cb09c5",
+          "description": "Item de Test-2",
+          "quantity": 1,
+          "price": 1000,
+          "createdAt": "2019-06-22T14:39:12.000Z",
+          "updatedAt": "2019-06-22T14:39:12.000Z",
+          "invoiceId": "74691e6e-ceda-4e2f-88a3-1c08b2c86484"
+        }
+      ],
+      "customer": {
+        "name": "Maria Assessoria Jurídica Ltda",
+        "email": "maria@email.com",
+        "phoneNumber": "551625392136",
+        "doc": {
+          "type": "cnpj",
+          "number": "70384052000194"
+        },
+        "address": {
+          "cep": "29113740",
+          "uf": "ES",
+          "city": "Vila Velha",
+          "area": "Santa Clara",
+          "addressLine1": "Rua Santa Lúcia",
+          "streetNumber": "9999"
+        }
+      },
+      "notifications": {
+        "sendOnCreate": false,
+        "reminders": {
+          "cc": {
+            "emails": []
+          },
+          "before": {
+            "send": false,
+            "days": 3,
+            "time": "10:00:00"
+          },
+          "after": {
+            "send": false,
+            "days": "5",
+            "time": "11:00:00"
+          },
+          "expiration": {
+            "send": false,
+            "time": "12:00:00"
+          },
+          "overdue": {
+            "send": false
+          }
+        },
+        "types": {
+          "email": true,
+          "sms": false,
+          "whatsapp": false
+        }
+      },
+      "instructionsMsg": "Teste de Instrução",
+      "notes": "Teste de Observação",
+      "invoiceUrl": "https://sandbox.easypagamentos.com.br/faturas",
+      "payment": {
+        "status": "1",
+        "description": "Aguardando pagamento"
+      },
+      "events": [
+        {
+          "id": "18785c31-19d8-49d2-aab5-917e719fce38",
+          "type": "INVOICE.CREATED",
+          "createdAt": "2019-06-22T14:39:12.000Z",
+          "updatedAt": "2019-06-22T14:39:12.000Z",
+          "invoiceId": "74691e6e-ceda-4e2f-88a3-1c08b2c86484"
+        }
+      ],
+      "createdAt": "2019-06-22T14:39:12.000Z",
+      "updatedAt": "2019-06-22T14:39:12.000Z"
     }
-  }
-]
+  ]
+}
 ```
 
 Este endpoint lista todas as cobranças.
@@ -720,6 +877,21 @@ Este endpoint lista todas as cobranças.
 ### Requisição HTTP
 
 `GET https://sandbox.easypagamentos.com.br/api/v1/invoices`
+
+### Parâmetros Query
+
+| Parâmetro     | Descrição                                                                                                                                                                                                                                                    | Obrigatório |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------- |
+| page          | Número da página a ser retornada                                                                                                                                                                                                                             | Não         |
+| limit         | Número itens a ser retornado por página. Valor mínimo: 1, valor máximo: 100. Caso não seja infromado, será aplicado o valor default de 100 itens                                                                                                             | Não         |
+| search        | Parâmetro que recebe texto e efetua pesquisa nos campos de nome do cliente, email do cliente, cpf/cnpj do cliente, observações e referência da cobrança                                                                                                      | Não         |
+| docNumber     | Parâmetro que filtra cobranças a partir de cpf/cnpj. Pode ser informado com ou sem máscara                                                                                                                                                                   | Não         |
+| paymentStatus | Parâmetro que filtra cobranças por um ou mais status de pagamento separados por vírgula                                                                                                                                                                      | Não         |
+| sortBy        | Um hash contendo na chave, o nome do campo para ordenação e o valor DESC ou ASC para descendente e ascendente, respectivamente. Exemplos: sortBy[dueDate]=DESC, sortBy[amount]=DESC, sortBy[customerName]=ASC, sortBy[createdAt]=ASC, sortBy[updatedAt]=DESC | Não         |
+| createdAtFrom | Filtra registros criados a partir da data passada no parâmetro. Formato (AAAA-MM-DDThh:mm:ss)                                                                                                                                                                | Não         |
+| createdAtTo   | Filtra registros criados até esta data passada no parâmetro. Formato (AAAA-MM-DDThh:mm:ss)                                                                                                                                                                   | Não         |
+| updatedSince  | Filtra registros atualizados desde o valor passado no parâmetro. Formato (AAAA-MM-DDThh:mm:ss)                                                                                                                                                               | Não         |
+| paymentStatus | Filtra registros que possuam os status de pagamento informados. Formato (Código status do pagamento. Caso seja mais de um status, separar por vírgula.) Exemplo: paymentStatus=1,2,3 ou paymentStatus=1                                                      | Não         |
 
 ## Listar uma cobrança
 
@@ -834,7 +1006,7 @@ HTTP/1.1 200 Ok
     "digitableLine": "00190.00009 02625.444100 45000.820170 2 79410000002000",
     "barCodeNumber": "00192794100000020000000002625444104500082017"
   },
-  "invoiceUrl": "http://localhost:5000",
+  "invoiceUrl": "https://sandbox.easypagamentos.com.br/faturas",
   "payment": {
     "status": "1",
     "description": "Aguardando pagamento"
@@ -1042,7 +1214,7 @@ HTTP/1.1 201 Created
     "digitableLine": "00190.00009 02625.444100 45000.820170 2 79410000002000",
     "barCodeNumber": "00192794100000020000000002625444104500082017"
   },
-  "invoiceUrl": "http://localhost:5000",
+  "invoiceUrl": "https://sandbox.easypagamentos.com.br/faturas",
   "payment": {
     "status": "1",
     "description": "Aguardando pagamento"
@@ -1078,12 +1250,12 @@ Este endpoint cria uma cobrança para um cliente existente.
 | fine.percentage               | Valor percentual da multa a ser cobrado sob o valor total dos itens por pagamento atrasado. Deve ser maior que 0 e menor ou igual a 10                                             | Double  | Se informado o objeto de multa                 |
 | fine.lateDays                 | Número de dias de atraso para aplicação da multa. Deve ser maior que 0 e menor que 30                                                                                              | Integer | Se informado o objeto de multa                 |
 | customer                      | Objeto do Cliente                                                                                                                                                                  | Object  | Sim                                            |
-| customer.id                   | ID do Cliente existente para qual a cobrança será criada                                                                                                                             | String  | Sim                                            |
+| customer.id                   | ID do Cliente existente para qual a cobrança será criada                                                                                                                           | String  | Sim                                            |
 | notifications                 | Objeto de notificações                                                                                                                                                             | Object  | Não                                            |
 | notifications.cc              | Objeto de envio de cópias                                                                                                                                                          | Object  | Não                                            |
-| notifications.cc.emails       | Array de emails, que também recebem como cópia as notificações da cobrança.                                                                                                          | Array   | Não                                            |
-| notifications.sendOnCreate    | Define se a cobrança é enviada para o(s) cliente(s) logo após ser criada                                                                                                             | Boolean | Não                                            |
-| notifications.reminders       | Objeto de lembretes de cobrança                                                                                                                                                      | Object  | Não                                            |
+| notifications.cc.emails       | Array de emails, que também recebem como cópia as notificações da cobrança.                                                                                                        | Array   | Não                                            |
+| notifications.sendOnCreate    | Define se a cobrança é enviada para o(s) cliente(s) logo após ser criada                                                                                                           | Boolean | Não                                            |
+| notifications.reminders       | Objeto de lembretes de cobrança                                                                                                                                                    | Object  | Não                                            |
 | notifications.before          | Objeto de lembrete da data do vencimento                                                                                                                                           | Object  | Não                                            |
 | notifications.before.send     | Define se o lembrete deve ser enviado. Default: true                                                                                                                               | Boolean | Não                                            |
 | notifications.before.days     | Define a quantidade de dias antes da data de vencimento que o lembrete deve ser enviado. Default: true                                                                             | Boolean | Não                                            |
@@ -1096,8 +1268,8 @@ Este endpoint cria uma cobrança para um cliente existente.
 | notifications.expiration      | Objeto de lembrete na data do vencimento                                                                                                                                           | Object  | Não                                            |
 | notifications.expiration.send | Define se o lembrete deve ser enviado. Default: true                                                                                                                               | Boolean | Não                                            |
 | notifications.expiration.time | Define o horário de preferência que o lembrete deve ser enviado. O formato deve ser `HH:mm:ss` ou `HH:mm:ss A`. Exemplos: `22:00:00` ou `10:00:00 PM`. `06:00:00` ou `06:00:00 AM` | String  | Não                                            |
-| notifications.overdue         | Objeto de lembrete de cobrança vencida                                                                                                                                               | Object  | Não                                            |
-| notifications.overdue.send    | Define se o lembrete deve ser enviado, caso a cobrança esteja atrasada. Default: true                                                                                                | Boolean | Não                                            |
+| notifications.overdue         | Objeto de lembrete de cobrança vencida                                                                                                                                             | Object  | Não                                            |
+| notifications.overdue.send    | Define se o lembrete deve ser enviado, caso a cobrança esteja atrasada. Default: true                                                                                              | Boolean | Não                                            |
 | instructionsMsg               | Instruções de pagamento que constará no boleto. Deve conter no máximo 100 caracteres                                                                                               | String  | Não                                            |
 | notes                         | Observações sobre o pagamento. Não constará no boleto. Deve conter no máximo 100 caracteres                                                                                        | String  | Não                                            |
 
@@ -1301,7 +1473,7 @@ HTTP/1.1 201 Created
     "digitableLine": "00190.00009 02625.444100 45000.822176 5 79410000002000",
     "barCodeNumber": "00195794100000020000000002625444104500082217"
   },
-  "invoiceUrl": "http://localhost:5000",
+  "invoiceUrl": "https://sandbox.easypagamentos.com.br/faturas",
   "payment": {
     "status": "1",
     "description": "Aguardando pagamento"
@@ -1353,8 +1525,8 @@ Este endpoint cria uma cobrança com novo cliente.
 | customer.address.streetNumber | Número do logradouro                                                                                                                                                               | String  | Não                                            |
 | String                        | Sim                                                                                                                                                                                |
 | notifications                 | Objeto de notificações                                                                                                                                                             | Object  | Não                                            |
-| notifications.sendOnCreate    | Define se a cobrança é enviada para o(s) cliente(s) logo após ser criada                                                                                                             | Boolean | Não                                            |
-| notifications.reminders       | Objeto de lembretes de cobrança                                                                                                                                                      | Object  | Não                                            |
+| notifications.sendOnCreate    | Define se a cobrança é enviada para o(s) cliente(s) logo após ser criada                                                                                                           | Boolean | Não                                            |
+| notifications.reminders       | Objeto de lembretes de cobrança                                                                                                                                                    | Object  | Não                                            |
 | notifications.before          | Objeto de lembrete da data do vencimento                                                                                                                                           | Object  | Não                                            |
 | notifications.before.send     | Define se o lembrete deve ser enviado. Default: true                                                                                                                               | Boolean | Não                                            |
 | notifications.before.days     | Define a quantidade de dias antes da data de vencimento que o lembrete deve ser enviado. Default: true                                                                             | Boolean | Não                                            |
@@ -1367,8 +1539,8 @@ Este endpoint cria uma cobrança com novo cliente.
 | notifications.expiration      | Objeto de lembrete na data do vencimento                                                                                                                                           | Object  | Não                                            |
 | notifications.expiration.send | Define se o lembrete deve ser enviado. Default: true                                                                                                                               | Boolean | Não                                            |
 | notifications.expiration.time | Define o horário de preferência que o lembrete deve ser enviado. O formato deve ser `HH:mm:ss` ou `HH:mm:ss A`. Exemplos: `22:00:00` ou `10:00:00 PM`. `06:00:00` ou `06:00:00 AM` | String  | Não                                            |
-| notifications.overdue         | Objeto de lembrete de cobrança vencida                                                                                                                                               | Object  | Não                                            |
-| notifications.overdue.send    | Define se o lembrete deve ser enviado, caso a cobrança esteja atrasada. Default: true                                                                                                | Boolean | Não                                            |
+| notifications.overdue         | Objeto de lembrete de cobrança vencida                                                                                                                                             | Object  | Não                                            |
+| notifications.overdue.send    | Define se o lembrete deve ser enviado, caso a cobrança esteja atrasada. Default: true                                                                                              | Boolean | Não                                            |
 | instructionsMsg               | Instruções de pagamento que constará no boleto. Deve conter no máximo 100 caracteres                                                                                               | String  | Não                                            |
 | notes                         | Observações sobre o pagamento. Não constará no boleto. Deve conter no máximo 100 caracteres                                                                                        | String  | Não                                            |
 
@@ -1454,7 +1626,7 @@ HTTP/1.1 200 Ok
     "digitableLine": "00190.00009 02625.444100 45000.805171 2 78910000002000",
     "barCodeNumber": "00192789100000020000000002625444104500080517"
   },
-  "invoiceUrl": "http://localhost:5000",
+  "invoiceUrl": "https://sandbox.easypagamentos.com.br/faturas",
   "payment": {
     "status": "1",
     "description": "Aguardando pagamento"
@@ -1489,8 +1661,8 @@ Este atualiza data de vencimento de uma cobrança.
 | fine.percentage               | Valor percentual da multa a ser cobrado sob o valor total dos itens por pagamento atrasado. Deve ser maior que 0 e menor ou igual a 10                                             | Double  | Se informado o objeto de multa                 |
 | fine.lateDays                 | Número de dias de atraso para aplicação da multa. Deve ser maior que 0 e menor que 30                                                                                              | Integer | Se informado o objeto de multa                 |
 | notifications                 | Objeto de notificações                                                                                                                                                             | Object  | Não                                            |
-| notifications.sendOnCreate    | Define se a cobrança é enviada para o(s) cliente(s) logo após ser criada                                                                                                             | Boolean | Não                                            |
-| notifications.reminders       | Objeto de lembretes de cobrança                                                                                                                                                      | Object  | Não                                            |
+| notifications.sendOnCreate    | Define se a cobrança é enviada para o(s) cliente(s) logo após ser criada                                                                                                           | Boolean | Não                                            |
+| notifications.reminders       | Objeto de lembretes de cobrança                                                                                                                                                    | Object  | Não                                            |
 | notifications.before          | Objeto de lembrete da data do vencimento                                                                                                                                           | Object  | Não                                            |
 | notifications.before.send     | Define se o lembrete deve ser enviado. Default: true                                                                                                                               | Boolean | Não                                            |
 | notifications.before.days     | Define a quantidade de dias antes da data de vencimento que o lembrete deve ser enviado. Default: true                                                                             | Boolean | Não                                            |
@@ -1503,8 +1675,8 @@ Este atualiza data de vencimento de uma cobrança.
 | notifications.expiration      | Objeto de lembrete na data do vencimento                                                                                                                                           | Object  | Não                                            |
 | notifications.expiration.send | Define se o lembrete deve ser enviado. Default: true                                                                                                                               | Boolean | Não                                            |
 | notifications.expiration.time | Define o horário de preferência que o lembrete deve ser enviado. O formato deve ser `HH:mm:ss` ou `HH:mm:ss A`. Exemplos: `22:00:00` ou `10:00:00 PM`. `06:00:00` ou `06:00:00 AM` | String  | Não                                            |
-| notifications.overdue         | Objeto de lembrete de cobrança vencida                                                                                                                                               | Object  | Não                                            |
-| notifications.overdue.send    | Define se o lembrete deve ser enviado, caso a cobrança esteja atrasada. Default: true                                                                                                | Boolean | Não                                            |
+| notifications.overdue         | Objeto de lembrete de cobrança vencida                                                                                                                                             | Object  | Não                                            |
+| notifications.overdue.send    | Define se o lembrete deve ser enviado, caso a cobrança esteja atrasada. Default: true                                                                                              | Boolean | Não                                            |
 | instructionsMsg               | Instruções de pagamento que constará no boleto. Deve conter no máximo 100 caracteres                                                                                               | String  | Não                                            |
 | notes                         | Observações sobre o pagamento. Não constará no boleto. Deve conter no máximo 100 caracteres                                                                                        | String  | Não                                            |
 
@@ -1806,6 +1978,18 @@ Este endpoint exclui uma conta bancária do usuário.
 
 # Resgates
 
+## Status de Resgate
+
+O parâmetro `status.code`, retornado no objeto de resposta, contém o status do resgate.
+
+| Status | Descrição                                                                                            |
+| ------ | ---------------------------------------------------------------------------------------------------- |
+| 1      | Pedido de resgate efetuado                                                                           |
+| 2      | Transferência bancária efetuada. Aguardando confirmação do banco de destino                          |
+| 3      | Pedido de resgate recusado. Por favor entre em contato com nosso suporte                             |
+| 4      | Pedido de resgate concluído com sucesso. O banco de destino confirmou o recebimento da transferência |
+| 5      | Pedido de resgate falhou. A transferência foi devolvida pelo banco de destino                        |
+
 ## Listar todos os resgates
 
 > Resposta
@@ -1815,47 +1999,66 @@ HTTP/1.1 200 Ok
 ```
 
 ```json
-[
-  {
-    "id": "2c486134-0e27-4c1c-a312-0fe468dae711",
-    "amount": 1000,
-    "bankAccount": {
-      "beneficiary": {
-        "name": "João Silva",
-        "doc": {
-          "type": "cpf",
-          "number": "64223737830"
+{
+  "limit": 100,
+  "pages": 1,
+  "count": 1,
+  "results": [
+    {
+      "id": "2c486134-0e27-4c1c-a312-0fe468dae711",
+      "amount": 1000,
+      "bankAccount": {
+        "beneficiary": {
+          "name": "João Silva",
+          "doc": {
+            "type": "cpf",
+            "number": "64223737830"
+          }
+        },
+        "bank": {
+          "name": "Banco do Brasil S.A.",
+          "bankCode": "001"
+        },
+        "agency": {
+          "number": "9999",
+          "digit": "9"
+        },
+        "account": {
+          "number": "999999",
+          "digit": "9",
+          "type": "checking"
         }
       },
-      "bank": {
-        "name": "Banco do Brasil S.A.",
-        "bankCode": "001"
+      "status": {
+        "code": "1",
+        "description": "Pedido de resgate recebido."
       },
-      "agency": {
-        "number": "9999",
-        "digit": "9"
-      },
-      "account": {
-        "number": "999999",
-        "digit": "9",
-        "type": "checking"
-      }
-    },
-    "status": {
-      "code": "1",
-      "description": "Pedido de resgate recebido."
-    },
-    "createdAt": "2019-04-02T17:11:20.000Z",
-    "updatedAt": "2019-04-02T17:11:20.000Z"
-  }
-]
+      "createdAt": "2019-04-02T17:11:20.000Z",
+      "updatedAt": "2019-04-02T17:11:20.000Z"
+    }
+  ]
+}
 ```
 
 Este endpoint lista todos os resgates do usuário.
 
 ### Requisição HTTP
 
-`GET https://sandbox.easypagamentos.com.br/api/v1/bank-accounts`
+`GET https://sandbox.easypagamentos.com.br/api/v1/redemptions`
+
+### Parâmetros Query
+
+| Parâmetro     | Descrição                                                                                                                                                                                                                           | Obrigatório |
+| ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| page          | Número da página a ser retornada                                                                                                                                                                                                    | Não         |
+| limit         | Número itens a ser retornado por página. Valor mínimo: 1, valor máximo: 100. Caso não seja infromado, será aplicado o valor default de 100 itens                                                                                    | Não         |
+| search        | Parâmetro que recebe texto e efetua pesquisa nos campos de nome do banco, nome do titular da conta, número da agência da conta, número da conta                                                                                     | Não         |
+| docNumber     | Parâmetro que filtra resgates a partir de cpf/cnpj do beneficiário. Pode ser informado com ou sem máscara                                                                                                                           | Não         |
+| status        | Parâmetro que filtra resgates por um ou mais status separados por vírgula                                                                                                                                                           | Não         |
+| sortBy        | Um hash contendo na chave, o nome do campo para ordenação e o valor DESC ou ASC para descendente e ascendente, respectivamente. Exemplos: sortBy[amount]=ASC, sortBy[approvedAt]=ASC, sortBy[createdAt]=ASC, sortBy[updatedAt]=DESC | Não         |
+| createdAtFrom | Filtra registros criados a partir da data passada no parâmetro. Formato (AAAA-MM-DDThh:mm:ss)                                                                                                                                       | Não         |
+| createdAtTo   | Filtra registros criados até esta data passada no parâmetro. Formato (AAAA-MM-DDThh:mm:ss)                                                                                                                                          | Não         |
+| updatedSince  | Filtra registros atualizados desde o valor passado no parâmetro. Formato (AAAA-MM-DDThh:mm:ss)                                                                                                                                      | Não         |
 
 ## Listar um resgate
 
@@ -2015,6 +2218,17 @@ Este endpoint lista os saldos do usuário.
 
 # Extratos
 
+## Tipos de Transação
+
+O parâmetro `type`, retornado no objeto de resposta, contém o tipo de transação no extrato.
+
+| Tipo | Descrição                                |
+| ---- | ---------------------------------------- |
+| 1    | Crédito de cobrança paga                 |
+| 2    | Valor de resgate solicitado              |
+| 3    | Extorno de resgate solicitado            |
+| 4    | Débito de taxa de recebimento por boleto |
+
 ## Listar Extratos
 
 > Resposta
@@ -2024,150 +2238,47 @@ HTTP/1.1 200 Ok
 ```
 
 ```json
-[
-  {
-    "id": "fcb1a7ae-90fb-4e71-b8c6-b75160255760",
-    "amount": 100,
-    "balance": {
-      "previousAmount": 500,
-      "availableAmount": 600
-    },
-    "currency": "BRL",
-    "type": "3",
-    "description": "Extorno  de resgate solicitado",
-    "reference": {
-      "id": "88d727e3-b4fc-4984-b847-f2259f28bc9f",
-      "type": "REDEMPTION"
-    },
-    "date": "2019-05-11T01:31:23.000Z"
-  },
-  {
-    "id": "c1351845-3079-41e9-9f3a-fb9b94c48fcd",
-    "amount": 100,
-    "balance": {
-      "previousAmount": 600,
-      "availableAmount": 500
-    },
-    "currency": "BRL",
-    "type": "2",
-    "description": "Resgate solicitado",
-    "reference": {
-      "id": "043cf63a-1da7-441d-809f-a388eabd2738",
-      "type": "REDEMPTION"
-    },
-    "date": "2019-05-11T01:25:53.000Z"
-  },
-  {
-    "id": "6629a707-132e-4339-a060-b061ec8d1669",
-    "amount": 490,
-    "balance": {
-      "previousAmount": 110,
-      "availableAmount": 600
-    },
-    "currency": "BRL",
-    "type": "1",
-    "description": "Crédito de cobrança(s) paga(s)",
-    "reference": {
-      "id": "9142eca6-acc7-429f-82cf-67c3f1f5867c",
-      "type": "INVOICE"
-    },
-    "date": "2019-05-11T01:21:35.000Z"
-  },
-  {
-    "id": "c3dd8402-2ad6-4bc4-9981-4c51246ec59f",
-    "amount": -290,
-    "balance": {
-      "previousAmount": 400,
-      "availableAmount": 110
-    },
-    "currency": "BRL",
-    "type": "4",
-    "description": "Débito de taxa de recebimento de boleto",
-    "reference": {
-      "id": "9142eca6-acc7-429f-82cf-67c3f1f5867c",
-      "type": "INVOICE"
-    },
-    "date": "2019-05-11T01:21:35.000Z"
-  },
-  {
-    "id": "70f67ba7-c323-4425-b3aa-de2c4129590b",
-    "amount": 490,
-    "balance": {
-      "previousAmount": -90,
-      "availableAmount": 400
-    },
-    "currency": "BRL",
-    "type": "1",
-    "description": "Crédito de cobrança(s) paga(s)",
-    "reference": {
-      "id": "9142eca6-acc7-429f-82cf-67c3f1f5867c",
-      "type": "INVOICE"
-    },
-    "date": "2019-05-11T01:19:41.000Z"
-  },
-  {
-    "id": "76759858-55cd-4726-83c1-04b5bf546e07",
-    "amount": -290,
-    "balance": {
-      "previousAmount": 200,
-      "availableAmount": -90
-    },
-    "currency": "BRL",
-    "type": "4",
-    "description": "Débito de taxa de recebimento de boleto",
-    "reference": {
-      "id": "9142eca6-acc7-429f-82cf-67c3f1f5867c",
-      "type": "INVOICE"
-    },
-    "date": "2019-05-11T01:19:41.000Z"
-  },
-  {
-    "id": "12296685-3e2f-4ffe-b076-e017f8858d53",
-    "amount": -290,
-    "balance": {
-      "previousAmount": 0,
-      "availableAmount": -290
-    },
-    "currency": "BRL",
-    "type": "4",
-    "description": "Débito de taxa de recebimento de boleto",
-    "reference": {
-      "id": "9142eca6-acc7-429f-82cf-67c3f1f5867c",
-      "type": "INVOICE"
-    },
-    "date": "2019-05-11T01:19:21.000Z"
-  },
-  {
-    "id": "ab413fac-d3ee-4fca-a169-3fd1fea6f477",
-    "amount": 490,
-    "balance": {
-      "previousAmount": -290,
-      "availableAmount": 200
-    },
-    "currency": "BRL",
-    "type": "1",
-    "description": "Crédito de cobrança(s) paga(s)",
-    "reference": {
-      "id": "9142eca6-acc7-429f-82cf-67c3f1f5867c",
-      "type": "INVOICE"
-    },
-    "date": "2019-05-11T01:19:21.000Z"
-  }
-]
+{
+  "limit": 100,
+  "pages": 1,
+  "count": 1,
+  "results": [
+    {
+      "id": "134c09ae-9293-11e9-9611-73ceb10b2493",
+      "amount": 1000,
+      "balance": {
+        "previousAmount": 1000,
+        "availableAmount": 2000
+      },
+      "currency": "BRL",
+      "type": "1",
+      "description": "Crédito de cobrança(s) paga(s)",
+      "reference": {
+        "id": "1cae37d7-8006-439b-9a07-2580d79569f2",
+        "type": "INVOICE"
+      },
+      "createdAt": "2019-03-26T10:45:38.000Z"
+    }
+  ]
+}
 ```
 
 Este endpoint lista os extratos do usuário.
 
 ### Requisição HTTP
 
-`GET https://sandbox.easypagamentos.com.br/api/v1/statements?startDate=2019-04-02&endDate=2019-04-30`
+`GET https://sandbox.easypagamentos.com.br/api/v1/statements`
 
 ### Parâmetros Query
 
-| Parâmetro | Descrição                                             | Obrigatório |
-| --------- | ----------------------------------------------------- | ----------- |
-| startDate | Data inicial de referência em formato ISO: YYYY-MM-DD | Não         |
-| endDate   | Data final de referência em formato ISO: YYYY-MM-DD   | Não         |
+| Parâmetro     | Descrição                                                                                                                                                                            | Obrigatório |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------- |
+| page          | Número da página a ser retornada                                                                                                                                                     | Não         |
+| limit         | Número itens a ser retornado por página. Valor mínimo: 1, valor máximo: 100. Caso não seja infromado, será aplicado o valor default de 100 itens                                     | Não         |
+| type          | Filtra registros que possuam o tipo de transação informada. Formato (Código do tipo de transação. Caso seja mais de um tipo, separar por vírgula.) Exemplo: type=1,2,3 ou type=1     | Não         |
+| sortBy        | Um hash contendo na chave, o nome do campo para ordenação e o valor DESC ou ASC para descendente e ascendente, respectivamente. Exemplos: sortBy[amount]=DESC, sortBy[createdAt]=ASC | Não         |
+| createdAtFrom | Filtra registros criados a partir da data passada no parâmetro. Formato (AAAA-MM-DDThh:mm:ss)                                                                                        | Não         |
+| createdAtTo   | Filtra registros criados até esta data passada no parâmetro. Formato (AAAA-MM-DDThh:mm:ss)                                                                                           | Não         |
 
 # Relatórios
 
@@ -2236,8 +2347,8 @@ Este endpoint lista os saldos acumulados de cobranças.
 
 ### Parâmetros Query
 
-| Parâmetro | Descrição                                                                                        | Obrigatório |
-| --------- | ------------------------------------------------------------------------------------------------ | ----------- |
-| startDate | Data inicial de referência em formato ISO: YYYY-MM-DD                                            | Não         |
-| endDate   | Data final de referência em formato ISO: YYYY-MM-DD                                              | Não         |
+| Parâmetro | Descrição                                                                                          | Obrigatório |
+| --------- | -------------------------------------------------------------------------------------------------- | ----------- |
+| startDate | Data inicial de referência em formato ISO: YYYY-MM-DD                                              | Não         |
+| endDate   | Data final de referência em formato ISO: YYYY-MM-DD                                                | Não         |
 | docNumber | CPF/CNPJ do cliente. Pode ser utilizado para exibir os saldos de cobranças referentes a um cliente | Não         |
