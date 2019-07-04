@@ -345,8 +345,9 @@ HTTP/1.1 200 Ok
 
 ```json
 {
+  "page": 1,
   "limit": 100,
-  "pages": 1,
+  "pagesTotal": 1,
   "count": 2,
   "results": [
     {
@@ -660,8 +661,9 @@ HTTP/1.1 200 Ok
 
 ```json
 {
+  "page": 1,
   "limit": 100,
-  "pages": 1,
+  "pagesTotal": 1,
   "count": 2,
   "summary": {
     "amount": 4999,
@@ -674,6 +676,7 @@ HTTP/1.1 200 Ok
       "dueDate": "2019-07-06",
       "amount": 2999,
       "paidAmount": 0,
+      "paidAt": null,
       "currency": "BRL",
       "items": [
         {
@@ -697,7 +700,6 @@ HTTP/1.1 200 Ok
       ],
       "earlyDiscount": {
         "percentage": 10,
-        "expiryDate": "2019-07-01",
         "earlyDays": 5
       },
       "interest": {
@@ -781,6 +783,7 @@ HTTP/1.1 200 Ok
       "dueDate": "2019-06-30",
       "amount": 2000,
       "paidAmount": 0,
+      "paidAt": null,
       "currency": "BRL",
       "items": [
         {
@@ -904,9 +907,11 @@ HTTP/1.1 200 Ok
 ```json
 {
   "id": "31da8d81-f0a6-4c9b-a120-0ccf12f96fab",
+  "reference": null,
   "dueDate": "2019-07-05",
   "amount": 2000,
   "paidAmount": 0,
+  "paidAt": null,
   "currency": "BRL",
   "items": [
     {
@@ -942,7 +947,7 @@ HTTP/1.1 200 Ok
   },
   "earlyDiscount": {
     "percentage": 4.75,
-    "expiryDate": "2019-07-03"
+    "earlyDays": 1
   },
   "interest": {
     "percentage": 1
@@ -1038,7 +1043,7 @@ Este endpoint lista uma cobrança.
   },
   "earlyDiscount": {
     "percentage": 4.75,
-    "expiryDate": "2019-07-03"
+    "earlyDays": 1
   },
   "interest": {
     "percentage": 1.0
@@ -1112,9 +1117,11 @@ HTTP/1.1 201 Created
 ```json
 {
   "id": "31da8d81-f0a6-4c9b-a120-0ccf12f96fab",
+  "reference": null,
   "dueDate": "2019-07-05",
   "amount": 2000,
   "paidAmount": 0,
+  "paidAt": null,
   "currency": "BRL",
   "items": [
     {
@@ -1150,7 +1157,7 @@ HTTP/1.1 201 Created
   },
   "earlyDiscount": {
     "percentage": 4.75,
-    "expiryDate": "2019-07-03"
+    "earlyDays": 1
   },
   "interest": {
     "percentage": 1
@@ -1243,7 +1250,7 @@ Este endpoint cria uma cobrança para um cliente existente.
 | earlyDiscount                 | Objeto de descontos por antecipação de pagamento                                                                                                                                   | Object  | Não                                            |
 | earlyDiscount.amount          | Valor em centavos do desconto a ser concedido sob o valor total dos itens por pagamento antecipado                                                                                 | Integer | Se não informado percentual do desconto        |
 | earlyDiscount.percentage      | Valor percentual do desconto a ser concedido sob o valor total dos itens por pagamento antecipado                                                                                  | Double  | Se não informado valor em centavos do desconto |
-| earlyDiscount.expiryDate      | Data de expiração no formato ISO: YYYY-MM-DD do desconto por antecipação. Deve ser igual ou posterior a data atual e anterior a data de vencimento                                 | String  | Se informado o objeto de desconto              |
+| earlyDiscount.earlyDays       | Número de dias de antecedência para aplicar o desconto por antecipação.                                                                                                            | Integer | Se informado o objeto de desconto              |
 | interest                      | Objeto de juros da cobrança                                                                                                                                                        | Object  | Não                                            |
 | interest.percentage           | Valor percentual do juros a ser cobrado sob o valor total dos itens por pagamento atrasado. Deve ser maior que 0 e menor ou igual a 1                                              | Double  | Se informado o objeto de juros                 |
 | fine                          | Objeto de multa da cobrança                                                                                                                                                        | Object  | Não                                            |
@@ -1285,7 +1292,7 @@ Este endpoint cria uma cobrança para um cliente existente.
   },
   "earlyDiscount": {
     "percentage": 4.75,
-    "expiryDate": "2019-07-03"
+    "earlyDays": 1
   },
   "interest": {
     "percentage": 1.0
@@ -1371,9 +1378,11 @@ HTTP/1.1 201 Created
 ```json
 {
   "id": "32a41dc3-4a1a-4933-8b6c-9b4e962b7f28",
+  "reference": null,
   "dueDate": "2019-07-05",
   "amount": 2000,
   "paidAmount": 0,
+  "paidAt": null,
   "currency": "BRL",
   "items": [
     {
@@ -1409,7 +1418,7 @@ HTTP/1.1 201 Created
   },
   "earlyDiscount": {
     "percentage": 4.75,
-    "expiryDate": "2019-07-03"
+    "earlyDays": 1
   },
   "interest": {
     "percentage": 1
@@ -1502,7 +1511,7 @@ Este endpoint cria uma cobrança com novo cliente.
 | earlyDiscount                 | Objeto de descontos por antecipação de pagamento                                                                                                                                   | Object  | Não                                            |
 | earlyDiscount.amount          | Valor em centavos do desconto a ser concedido sob o valor total dos itens por pagamento antecipado                                                                                 | Integer | Se não informado percentual do desconto        |
 | earlyDiscount.percentage      | Valor percentual do desconto a ser concedido sob o valor total dos itens por pagamento antecipado                                                                                  | Double  | Se não informado valor em centavos do desconto |
-| earlyDiscount.expiryDate      | Data de expiração no formato ISO: YYYY-MM-DD do desconto por antecipação. Deve ser igual ou posterior a data atual e anterior a data de vencimento                                 | String  | Se informado o objeto de desconto              |
+| earlyDiscount.earlyDays       | Número de dias de antecedência para aplicar o desconto por antecipação.                                                                                                            | Integer | Se informado o objeto de desconto              |
 | interest                      | Objeto de juros da cobrança                                                                                                                                                        | Object  | Não                                            |
 | interest.percentage           | Valor percentual do juros a ser cobrado sob o valor total dos itens por pagamento atrasado. Deve ser maior que 0 e menor ou igual a 1                                              | Double  | Se informado o objeto de juros                 |
 | fine                          | Objeto de multa da cobrança                                                                                                                                                        | Object  | Não                                            |
@@ -1553,7 +1562,7 @@ Este endpoint cria uma cobrança com novo cliente.
   "dueDate": "2019-05-23",
   "earlyDiscount": {
     "percentage": 10,
-    "expiryDate": "2019-05-21"
+    "earlyDays": 1
   },
   "interest": {
     "percentage": 1
@@ -1576,6 +1585,7 @@ HTTP/1.1 200 Ok
 ```json
 {
   "id": "12c33170-bf9a-4dc1-9388-9a7c73a2cfa2",
+  "reference": null,
   "dueDate": "2019-05-23",
   "amount": 2000,
   "paidAmount": 0,
@@ -1638,7 +1648,7 @@ Este atualiza data de vencimento de uma cobrança.
 
 ### Requisição HTTP
 
-`POST https://sandbox.easypagamentos.com.br/api/v1/invoices/:id`
+`PUT https://sandbox.easypagamentos.com.br/api/v1/invoices/:id`
 
 ### Parâmetros URL
 
@@ -1654,7 +1664,7 @@ Este atualiza data de vencimento de uma cobrança.
 | earlyDiscount                 | Objeto de descontos por antecipação de pagamento                                                                                                                                   | Object  | Não                                            |
 | earlyDiscount.amount          | Valor em centavos do desconto a ser concedido sob o valor total dos itens por pagamento antecipado                                                                                 | Integer | Se não informado percentual do desconto        |
 | earlyDiscount.percentage      | Valor percentual do desconto a ser concedido sob o valor total dos itens por pagamento antecipado                                                                                  | Double  | Se não informado valor em centavos do desconto |
-| earlyDiscount.expiryDate      | Data de expiração no formato ISO: YYYY-MM-DD do desconto por antecipação. Deve ser igual ou posterior a data atual e anterior a data de vencimento                                 | String  | Se informado o objeto de desconto              |
+| earlyDiscount.earlyDays       | Número de dias de antecedência para aplicar o desconto por antecipação.                                                                                                            | Integer | Se informado o objeto de desconto              |
 | interest                      | Objeto de juros da cobrança                                                                                                                                                        | Object  | Não                                            |
 | interest.percentage           | Valor percentual do juros a ser cobrado sob o valor total dos itens por pagamento atrasado. Deve ser maior que 0 e menor ou igual a 1                                              | Double  | Se informado o objeto de juros                 |
 | fine                          | Objeto de multa da cobrança                                                                                                                                                        | Object  | Não                                            |
@@ -1692,7 +1702,7 @@ Este endpoint cancela uma cobrança.
 
 ### Requisição HTTP
 
-`POST https://sandbox.easypagamentos.com.br/api/v1/invoices/:id`
+`POST https://sandbox.easypagamentos.com.br/api/v1/invoices/:id/cancel`
 
 ### Parâmetros URL
 
@@ -2000,8 +2010,9 @@ HTTP/1.1 200 Ok
 
 ```json
 {
+  "page": 1,
   "limit": 100,
-  "pages": 1,
+  "pagesTotal": 1,
   "count": 1,
   "results": [
     {
@@ -2239,8 +2250,9 @@ HTTP/1.1 200 Ok
 
 ```json
 {
+  "page": 1,
   "limit": 100,
-  "pages": 1,
+  "pagesTotal": 1,
   "count": 1,
   "results": [
     {
