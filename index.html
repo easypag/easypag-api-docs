@@ -224,6 +224,9 @@
                   <li>
                     <a href="#api-easypag-v1" class="toc-h2 toc-link" data-title="API EasyPag v1">API EasyPag v1</a>
                   </li>
+                  <li>
+                    <a href="#ambientes-de-desenvolvimento" class="toc-h2 toc-link" data-title="Ambientes de Desenvolvimento">Ambientes de Desenvolvimento</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -284,7 +287,7 @@
               </ul>
           </li>
           <li>
-            <a href="#cobrancas" class="toc-h1 toc-link" data-title="Cobranças">Cobranças</a>
+            <a href="#cobrancas-boletos" class="toc-h1 toc-link" data-title="Cobranças (Boletos)">Cobranças (Boletos)</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#atencao-cpf-cnpj-para-teste-em-sandbox" class="toc-h2 toc-link" data-title="[Atenção] CPF/CNPJ para teste em Sandbox">[Atenção] CPF/CNPJ para teste em Sandbox</a>
@@ -302,7 +305,16 @@
                     <a href="#criar-uma-cobranca-com-cliente-existente" class="toc-h2 toc-link" data-title="Criar uma cobrança com cliente existente">Criar uma cobrança com cliente existente</a>
                   </li>
                   <li>
-                    <a href="#criar-uma-cobranca-com-novo-cliente" class="toc-h2 toc-link" data-title="Criar uma cobrança com novo cliente">Criar uma cobrança com novo cliente</a>
+                    <a href="#criar-uma-cobranca-com-cliente-avulso" class="toc-h2 toc-link" data-title="Criar uma cobrança com cliente avulso">Criar uma cobrança com cliente avulso</a>
+                  </li>
+                  <li>
+                    <a href="#criar-um-carne" class="toc-h2 toc-link" data-title="Criar um carnê">Criar um carnê</a>
+                  </li>
+                  <li>
+                    <a href="#listar-todos-os-carnes" class="toc-h2 toc-link" data-title="Listar todos os carnês">Listar todos os carnês</a>
+                  </li>
+                  <li>
+                    <a href="#listar-todas-as-cobrancas-de-um-carne" class="toc-h2 toc-link" data-title="Listar todas as cobranças de um carnê">Listar todas as cobranças de um carnê</a>
                   </li>
                   <li>
                     <a href="#atualizar-uma-cobranca" class="toc-h2 toc-link" data-title="Atualizar uma cobrança">Atualizar uma cobrança</a>
@@ -414,12 +426,32 @@
       <div class="content">
         <h1 id='introducao'>Introdução</h1><h2 id='api-easypag-v1'>API EasyPag v1</h2>
 <p>Integre seu software e tenha acesso às funcionalidades do Easypag, de forma simples e prática, com API moderna e respostas rápidas.</p>
-<h1 id='autenticacao'>Autenticação</h1><h2 id='basic'>Basic</h2>
-<p>Todos os endpoints da API são autenticados via Basic Auth.</p>
+<h2 id='ambientes-de-desenvolvimento'>Ambientes de Desenvolvimento</h2>
+<aside class="notice">
+É importante validar e testar sua integração em ambiente Sandbox, antes de utilizar o ambiente de Produção.
+</aside>
 
 <aside class="notice">
-É obrigatório a utilização de conexão segura em todos os endpoints. 
+É obrigatório a utilização de conexão segura (https) em todos os endpoints. 
 </aside>
+
+<table><thead>
+<tr>
+<th>Parâmetro</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Sandbox</td>
+<td>https://sandbox.easypagamentos.com.br/api/v1</td>
+</tr>
+<tr>
+<td>Produção</td>
+<td>https://app.easypagamentos.com.br/api/v1</td>
+</tr>
+</tbody></table>
+<h1 id='autenticacao'>Autenticação</h1><h2 id='basic'>Basic</h2>
+<p>Todos os endpoints da API são autenticados via Basic Auth.</p>
 <h3 id='parametros-basic'>Parâmetros Basic</h3>
 <table><thead>
 <tr>
@@ -467,10 +499,6 @@
 <tr>
 <td>INVOICE.SETTLED</td>
 <td>Notifica caso o status de pagamento de uma cobrança seja alterado para <code>3</code>, que equivale a cobrança marcada como paga.</td>
-</tr>
-<tr>
-<td>INVOICE.DUE</td>
-<td>Notifica caso a cobrança esteja em sua data de vencimento.</td>
 </tr>
 <tr>
 <td>INVOICE.OVERDUE</td>
@@ -1244,7 +1272,7 @@ Você pode informar apenas os parâmetros que deseja atualizar.
 <td>Sim</td>
 </tr>
 </tbody></table>
-<h1 id='cobrancas'>Cobranças</h1><h2 id='atencao-cpf-cnpj-para-teste-em-sandbox'>[Atenção] CPF/CNPJ para teste em Sandbox</h2>
+<h1 id='cobrancas-boletos'>Cobranças (Boletos)</h1><h2 id='atencao-cpf-cnpj-para-teste-em-sandbox'>[Atenção] CPF/CNPJ para teste em Sandbox</h2>
 <aside class="notice">
 Para testar a criação de cobranças com boletos registrados no ambiente Sandbox, é necessário utilizar um CPF ou CNPJ de teste que esteja listado abaixo, ao informar os dados do cliente na requisição.
 </aside>
@@ -1285,6 +1313,7 @@ Para testar a criação de cobranças com boletos registrados no ambiente Sandbo
 
 <table><thead>
 <tr>
+<th>Cód. Status</th>
 <th>Status</th>
 <th>Descrição</th>
 </tr>
@@ -1292,26 +1321,32 @@ Para testar a criação de cobranças com boletos registrados no ambiente Sandbo
 <tr>
 <td>1</td>
 <td>Aguardando pagamento</td>
+<td>Status inicial quando a cobrança é criada.</td>
 </tr>
 <tr>
 <td>2</td>
 <td>Cobrança paga</td>
+<td>As cobranças que foram pagas são atualizadas como pagas no dia útil seguinte ao pagamento do boleto.</td>
 </tr>
 <tr>
 <td>3</td>
 <td>Cobrança manualmente marcada como paga</td>
+<td>As cobranças que foram manualmente marcadas como pagas têm o seu status atualizado e o seu boleto automaticamente baixado.</td>
 </tr>
 <tr>
 <td>4</td>
 <td>Cobrança atrasada</td>
+<td>As cobranças que não foram pagas são automaticamente atualizadas como atrasadas.</td>
 </tr>
 <tr>
 <td>5</td>
 <td>Cobrança cancelada pelo usuário</td>
+<td>As cobranças que foram manualmente canceladas, têm o seu status atualizado para cancelada e o seu boleto automaticamente baixado.</td>
 </tr>
 <tr>
 <td>6</td>
 <td>Cobrança expirada</td>
+<td>As cobranças que não foram pagas 30 dias após o vencimento têm o seu boleto baixado pelo banco e o status atualizado para Expirada.</td>
 </tr>
 </tbody></table>
 <h2 id='listar-todas-as-cobrancas'>Listar todas as cobranças</h2>
@@ -1731,8 +1766,6 @@ Para testar a criação de cobranças com boletos registrados no ambiente Sandbo
 </tr>
 </tbody></table>
 <h2 id='criar-uma-cobranca-com-cliente-existente'>Criar uma cobrança com cliente existente</h2>
-<p>Para testar a criação de cobranças com boletos registrados no ambiente Sandbox, é necessário utilizar um CPF ou CNPJ de teste que esteja listado <a href="#atencao-cpf-cnpj-para-teste-em-sandbox">aqui</a> , ao informar os dados do cliente na requisição.</p>
-
 <blockquote>
 <p>Requisição</p>
 </blockquote>
@@ -1924,7 +1957,7 @@ Para testar a criação de cobranças com boletos registrados no ambiente Sandbo
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>Este endpoint cria uma cobrança para um cliente existente.</p>
+<p>Este endpoint cria uma cobrança para um cliente pré-cadastrado no endpoint de clientes.</p>
 <h3 id='requisicao-http-13'>Requisição HTTP</h3>
 <p><code>POST https://sandbox.easypagamentos.com.br/api/v1/invoices</code></p>
 <h3 id='parametros-body-5'>Parâmetros Body</h3>
@@ -2177,9 +2210,7 @@ Para testar a criação de cobranças com boletos registrados no ambiente Sandbo
 <td>Não</td>
 </tr>
 </tbody></table>
-<h2 id='criar-uma-cobranca-com-novo-cliente'>Criar uma cobrança com novo cliente</h2>
-<p>Para testar a criação de cobranças com boletos registrados no ambiente Sandbox, é necessário utilizar um CPF ou CNPJ de teste que esteja listado <a href="#atencao-cpf-cnpj-para-teste-em-sandbox">aqui</a> , ao informar os dados do cliente na requisição.</p>
-
+<h2 id='criar-uma-cobranca-com-cliente-avulso'>Criar uma cobrança com cliente avulso</h2>
 <blockquote>
 <p>Requisição</p>
 </blockquote>
@@ -2383,7 +2414,7 @@ Para testar a criação de cobranças com boletos registrados no ambiente Sandbo
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>Este endpoint cria uma cobrança com novo cliente.</p>
+<p>Este endpoint cria uma cobrança com dados avulsos de um cliente, sem a necessidade de tê-lo cadastrado na base. É ideal para sistemas que já possuem o controle de sua base de clientes e desejam apenas emitir as cobranças informando os dados dos seus clientes.</p>
 <h3 id='requisicao-http-14'>Requisição HTTP</h3>
 <p><code>POST https://sandbox.easypagamentos.com.br/api/v1/invoices</code></p>
 <h3 id='parametros-body-6'>Parâmetros Body</h3>
@@ -2708,7 +2739,258 @@ Para testar a criação de cobranças com boletos registrados no ambiente Sandbo
 <td>Não</td>
 </tr>
 </tbody></table>
-<h2 id='atualizar-uma-cobranca'>Atualizar uma cobrança</h2>
+<h2 id='criar-um-carne'>Criar um carnê</h2>
+<blockquote>
+<p>Requisição</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"dueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-30"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"interest"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"percentage"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"fine"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"percentage"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"lateDays"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Item de Teste"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="err">//</span><span class="w"> </span><span class="err">Recorrência</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="mi">12</span><span class="w"> </span><span class="err">parcelas</span><span class="w"> </span><span class="err">por</span><span class="w"> </span><span class="err">carnê.</span><span class="w">
+  </span><span class="err">//</span><span class="w"> </span><span class="err">As</span><span class="w"> </span><span class="err">parcelas</span><span class="w"> </span><span class="err">geradas</span><span class="w"> </span><span class="err">tem</span><span class="w"> </span><span class="err">as</span><span class="w"> </span><span class="err">datas</span><span class="w"> </span><span class="err">de</span><span class="w"> </span><span class="err">vencimento</span><span class="p">,</span><span class="w"> </span><span class="err">multa</span><span class="w"> </span><span class="err">e</span><span class="w"> </span><span class="err">descontos</span><span class="w">
+  </span><span class="err">//</span><span class="w"> </span><span class="err">incrementados</span><span class="w"> </span><span class="err">em</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="err">dias</span><span class="p">,</span><span class="w"> </span><span class="err">sucessivamente.</span><span class="w">
+  </span><span class="s2">"recurrence"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"repeat"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="err">//</span><span class="w"> </span><span class="err">Pode-se</span><span class="w"> </span><span class="err">utilizar</span><span class="w"> </span><span class="err">o</span><span class="w"> </span><span class="err">ID</span><span class="w"> </span><span class="err">do</span><span class="w"> </span><span class="err">cliente</span><span class="w"> </span><span class="err">ou</span><span class="w"> </span><span class="err">os</span><span class="w"> </span><span class="err">dados</span><span class="w"> </span><span class="err">avulsos.</span><span class="w">
+  </span><span class="s2">"customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"03f7f73f-617d-4d4d-845a-7d464a7d8011"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Resposta</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">201</span> <span class="ne">Created</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1060d867-c529-4852-b183-4fd474ecd812"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"dueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-30"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"paidAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"paidAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"720ceeec-148b-46a0-8abf-21d5b2de4681"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Item de Teste"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-22T17:33:35.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-22T17:33:35.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"invoiceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1060d867-c529-4852-b183-4fd474ecd812"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"lastMessageEvent"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"lastDateMessageEvent"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"interest"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"percentage"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"fine"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"lateDays"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"fineStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-11-06"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"percentage"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"João da Silva"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"joao@email.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5511988515697"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"doc"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cpf"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"29458917000"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"cep"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60135222"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"uf"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CE"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fortaleza"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"area"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dionísio Torres"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rua Marcondes Pereira"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"addressLine2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Prox dionísio Torres"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"streetNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1381"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"notifications"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"sendOnCreate"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"reminders"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"cc"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"before"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"send"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"days"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06:00:00"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"after"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"send"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"days"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06:00:00"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"expiration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"send"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06:00:00"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"overdue"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"send"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"types"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sms"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"whatsapp"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"recurrence"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="err">//</span><span class="w"> </span><span class="err">ID</span><span class="w"> </span><span class="err">da</span><span class="w"> </span><span class="err">Recorrência.</span><span class="w">
+    </span><span class="err">//</span><span class="w"> </span><span class="err">Pode</span><span class="w"> </span><span class="err">ser</span><span class="w"> </span><span class="err">utilizada</span><span class="w"> </span><span class="err">para</span><span class="w"> </span><span class="err">consultar</span><span class="w"> </span><span class="err">o</span><span class="w"> </span><span class="err">carnê</span><span class="w"> </span><span class="err">e</span><span class="w"> </span><span class="err">todas</span><span class="w"> </span><span class="err">as</span><span class="w"> </span><span class="err">cobranças</span><span class="w"> </span><span class="err">geradas.</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"49143944-38f8-4112-97ac-0c68602214d6"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-22T17:33:35.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-22T17:33:35.000Z"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"invoiceUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sandbox.easypagamentos.com.br"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aguardando pagamento"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"events"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8afd9586-1035-4e1f-bfd5-a56d070c2482"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INVOICE.CREATED"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-22T17:33:35.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-22T17:33:35.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"invoiceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1060d867-c529-4852-b183-4fd474ecd812"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-22T17:33:35.000Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-22T17:33:35.000Z"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Este endpoint cria um carnê com recorrência simples a partir do mesmo endpoint de cobranças. São utilizados aqui os mesmos dados e opções de criação das cobranças informados anteriormente. Você pode gerar um carnê apenas adicionando o objeto &quot;recurrence&quot;, conforme informado abaixo.</p>
+<h3 id='requisicao-http-15'>Requisição HTTP</h3>
+<p><code>POST https://sandbox.easypagamentos.com.br/api/v1/invoices</code></p>
+
+<aside class="notice">
+Você pode utilizar os mesmos dados e opções de criar cobranças, adicionando apenas os dados abaixo para indicar que se trata de um carnê. Você receberá o id da recorrência na resposta, que poderá utilizar para consultar todas as cobranças geradas pelo carnê.
+</aside>
+<h3 id='parametros-body-7'>Parâmetros Body</h3>
+<table><thead>
+<tr>
+<th>Parâmetro</th>
+<th>Descrição</th>
+<th>Tipo</th>
+<th>Obrigatório</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>recurrence</td>
+<td>Objeto de recorrência</td>
+<td>Object</td>
+<td>Sim (Para carnê)</td>
+</tr>
+<tr>
+<td>recurrence.repeat</td>
+<td>Número de parcelas a serem geradas com base no primeiro vencimento. Valores aceitos: 2 a 12.</td>
+<td>Integer</td>
+<td>Sim (Para carnê)</td>
+</tr>
+</tbody></table>
+<h2 id='listar-todos-os-carnes'>Listar todos os carnês</h2>
+<blockquote>
+<p>Resposta</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">Ok</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"pagesTotal"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12dc010f-f3ab-4e86-aff4-6c4cc12423b0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"repeat"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-22T17:23:39.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-22T17:23:39.000Z"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4b8de2ce-8396-42d4-987f-871762a32a6a"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"repeat"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-22T16:58:49.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-22T16:58:49.000Z"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eaf4a9a5-ac38-4e06-9466-170373bcec75"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"repeat"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-22T17:19:31.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-22T17:19:31.000Z"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Este endpoint lista todos carnês de cobranças.</p>
+<h3 id='requisicao-http-16'>Requisição HTTP</h3>
+<p><code>GET https://sandbox.easypagamentos.com.br/api/v1/recurrences</code></p>
+<h2 id='listar-todas-as-cobrancas-de-um-carne'>Listar todas as cobranças de um carnê</h2>
+<p>Este endpoint lista todas as cobranças de um carnê.</p>
+
+<p><code>GET https://sandbox.easypagamentos.com.br/api/v1/recurrences/:id/invoices</code></p>
+<h3 id='parametros-url-8'>Parâmetros URL</h3>
+<table><thead>
+<tr>
+<th>Parâmetro</th>
+<th>Descrição</th>
+<th>Obrigatório</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>O ID da recorrência</td>
+<td>Sim</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Resposta</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">Ok</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"pagesTotal"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12dc010f-f3ab-4e86-aff4-6c4cc12423b0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"repeat"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-22T17:23:39.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-22T17:23:39.000Z"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4b8de2ce-8396-42d4-987f-871762a32a6a"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"repeat"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-22T16:58:49.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-22T16:58:49.000Z"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eaf4a9a5-ac38-4e06-9466-170373bcec75"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"repeat"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-22T17:19:31.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-22T17:19:31.000Z"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='atualizar-uma-cobranca'>Atualizar uma cobrança</h2>
 <blockquote>
 <p>Requisição</p>
 </blockquote>
@@ -2794,9 +3076,9 @@ Para testar a criação de cobranças com boletos registrados no ambiente Sandbo
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Este atualiza data de vencimento de uma cobrança.</p>
-<h3 id='requisicao-http-15'>Requisição HTTP</h3>
+<h3 id='requisicao-http-17'>Requisição HTTP</h3>
 <p><code>PUT https://sandbox.easypagamentos.com.br/api/v1/invoices/:id</code></p>
-<h3 id='parametros-url-8'>Parâmetros URL</h3>
+<h3 id='parametros-url-9'>Parâmetros URL</h3>
 <table><thead>
 <tr>
 <th>Parâmetro</th>
@@ -2810,7 +3092,7 @@ Para testar a criação de cobranças com boletos registrados no ambiente Sandbo
 <td>Sim</td>
 </tr>
 </tbody></table>
-<h3 id='parametros-body-7'>Parâmetros Body</h3>
+<h3 id='parametros-body-8'>Parâmetros Body</h3>
 <table><thead>
 <tr>
 <th>Parâmetro</th>
@@ -3001,9 +3283,9 @@ Para testar a criação de cobranças com boletos registrados no ambiente Sandbo
 <pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">Ok</span>
 </code></pre>
 <p>Este endpoint cancela uma cobrança.</p>
-<h3 id='requisicao-http-16'>Requisição HTTP</h3>
+<h3 id='requisicao-http-18'>Requisição HTTP</h3>
 <p><code>POST https://sandbox.easypagamentos.com.br/api/v1/invoices/:id/cancel</code></p>
-<h3 id='parametros-url-9'>Parâmetros URL</h3>
+<h3 id='parametros-url-10'>Parâmetros URL</h3>
 <table><thead>
 <tr>
 <th>Parâmetro</th>
@@ -3024,9 +3306,9 @@ Para testar a criação de cobranças com boletos registrados no ambiente Sandbo
 <pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">Ok</span>
 </code></pre>
 <p>Este endpoint renderiza o arquivo pdf do boleto de uma cobrança.</p>
-<h3 id='requisicao-http-17'>Requisição HTTP</h3>
+<h3 id='requisicao-http-19'>Requisição HTTP</h3>
 <p><code>GET https://sandbox.easypagamentos.com.br/api/v1/invoices/:id/view/boleto</code></p>
-<h3 id='parametros-url-10'>Parâmetros URL</h3>
+<h3 id='parametros-url-11'>Parâmetros URL</h3>
 <table><thead>
 <tr>
 <th>Parâmetro</th>
@@ -3047,9 +3329,9 @@ Para testar a criação de cobranças com boletos registrados no ambiente Sandbo
 <pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">Ok</span>
 </code></pre>
 <p>Este endpoint reenvia uma cobrança.</p>
-<h3 id='requisicao-http-18'>Requisição HTTP</h3>
+<h3 id='requisicao-http-20'>Requisição HTTP</h3>
 <p><code>GET https://sandbox.easypagamentos.com.br/api/v1/invoices/:id/resend</code></p>
-<h3 id='parametros-url-11'>Parâmetros URL</h3>
+<h3 id='parametros-url-12'>Parâmetros URL</h3>
 <table><thead>
 <tr>
 <th>Parâmetro</th>
@@ -3080,7 +3362,7 @@ Para testar a criação de cobranças com boletos registrados no ambiente Sandbo
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>Este endpoint lista as informações das instituições financeiras disponíveis.</p>
-<h3 id='requisicao-http-19'>Requisição HTTP</h3>
+<h3 id='requisicao-http-21'>Requisição HTTP</h3>
 <p><code>GET https://sandbox.easypagamentos.com.br/api/v1/banks?search=banco do brasil</code></p>
 <h3 id='parametros-query-3'>Parâmetros Query</h3>
 <table><thead>
@@ -3133,7 +3415,7 @@ Para testar a criação de cobranças com boletos registrados no ambiente Sandbo
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>Este endpoint lista as contas bancárias cadastradas do usuário.</p>
-<h3 id='requisicao-http-20'>Requisição HTTP</h3>
+<h3 id='requisicao-http-22'>Requisição HTTP</h3>
 <p><code>GET https://sandbox.easypagamentos.com.br/api/v1/bank-accounts</code></p>
 <h2 id='listar-uma-conta-bancaria'>Listar uma conta bancária</h2>
 <blockquote>
@@ -3170,9 +3452,9 @@ Para testar a criação de cobranças com boletos registrados no ambiente Sandbo
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Este endpoint lista uma conta bancária do usuário.</p>
-<h3 id='requisicao-http-21'>Requisição HTTP</h3>
+<h3 id='requisicao-http-23'>Requisição HTTP</h3>
 <p><code>GET https://sandbox.easypagamentos.com.br/api/v1/bank-accounts/:id</code></p>
-<h3 id='parametros-url-12'>Parâmetros URL</h3>
+<h3 id='parametros-url-13'>Parâmetros URL</h3>
 <table><thead>
 <tr>
 <th>Parâmetro</th>
@@ -3241,9 +3523,9 @@ Para testar a criação de cobranças com boletos registrados no ambiente Sandbo
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Este endpoint cria uma conta bancária.</p>
-<h3 id='requisicao-http-22'>Requisição HTTP</h3>
+<h3 id='requisicao-http-24'>Requisição HTTP</h3>
 <p><code>POST https://sandbox.easypagamentos.com.br/api/v1/bank-accounts</code></p>
-<h3 id='parametros-body-8'>Parâmetros Body</h3>
+<h3 id='parametros-body-9'>Parâmetros Body</h3>
 <table><thead>
 <tr>
 <th>Parâmetro</th>
@@ -3320,9 +3602,9 @@ Para testar a criação de cobranças com boletos registrados no ambiente Sandbo
 <pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">204</span> <span class="ne">No Content</span>
 </code></pre>
 <p>Este endpoint exclui uma conta bancária do usuário.</p>
-<h3 id='requisicao-http-23'>Requisição HTTP</h3>
+<h3 id='requisicao-http-25'>Requisição HTTP</h3>
 <p><code>DELETE https://sandbox.easypagamentos.com.br/api/v1/bank-accounts/:id</code></p>
-<h3 id='parametros-url-13'>Parâmetros URL</h3>
+<h3 id='parametros-url-14'>Parâmetros URL</h3>
 <table><thead>
 <tr>
 <th>Parâmetro</th>
@@ -3413,7 +3695,7 @@ Para testar a criação de cobranças com boletos registrados no ambiente Sandbo
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Este endpoint lista todos os resgates do usuário.</p>
-<h3 id='requisicao-http-24'>Requisição HTTP</h3>
+<h3 id='requisicao-http-26'>Requisição HTTP</h3>
 <p><code>GET https://sandbox.easypagamentos.com.br/api/v1/redemptions</code></p>
 <h3 id='parametros-query-4'>Parâmetros Query</h3>
 <table><thead>
@@ -3508,9 +3790,9 @@ Para testar a criação de cobranças com boletos registrados no ambiente Sandbo
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Este endpoint lista um resgate do usuário.</p>
-<h3 id='requisicao-http-25'>Requisição HTTP</h3>
+<h3 id='requisicao-http-27'>Requisição HTTP</h3>
 <p><code>GET https://sandbox.easypagamentos.com.br/api/v1/bank-accounts/:id</code></p>
-<h3 id='parametros-url-14'>Parâmetros URL</h3>
+<h3 id='parametros-url-15'>Parâmetros URL</h3>
 <table><thead>
 <tr>
 <th>Parâmetro</th>
@@ -3573,9 +3855,9 @@ Para testar a criação de cobranças com boletos registrados no ambiente Sandbo
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Este endpoint cria um resgate do saldo da conta.</p>
-<h3 id='requisicao-http-26'>Requisição HTTP</h3>
+<h3 id='requisicao-http-28'>Requisição HTTP</h3>
 <p><code>POST https://sandbox.easypagamentos.com.br/api/v1/redemptions</code></p>
-<h3 id='parametros-body-9'>Parâmetros Body</h3>
+<h3 id='parametros-body-10'>Parâmetros Body</h3>
 <table><thead>
 <tr>
 <th>Parâmetro</th>
@@ -3624,7 +3906,7 @@ Para testar a criação de cobranças com boletos registrados no ambiente Sandbo
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Este endpoint lista os saldos do usuário.</p>
-<h3 id='requisicao-http-27'>Requisição HTTP</h3>
+<h3 id='requisicao-http-29'>Requisição HTTP</h3>
 <p><code>GET https://sandbox.easypagamentos.com.br/api/v1/balances</code></p>
 <h1 id='extratos'>Extratos</h1><h2 id='tipos-de-transacao'>Tipos de Transação</h2>
 <p>O parâmetro <code>type</code>, retornado no objeto de resposta, contém o tipo de transação no extrato.</p>
@@ -3683,7 +3965,7 @@ Para testar a criação de cobranças com boletos registrados no ambiente Sandbo
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Este endpoint lista os extratos do usuário.</p>
-<h3 id='requisicao-http-28'>Requisição HTTP</h3>
+<h3 id='requisicao-http-30'>Requisição HTTP</h3>
 <p><code>GET https://sandbox.easypagamentos.com.br/api/v1/statements</code></p>
 <h3 id='parametros-query-5'>Parâmetros Query</h3>
 <table><thead>
@@ -3777,7 +4059,7 @@ Para testar a criação de cobranças com boletos registrados no ambiente Sandbo
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Este endpoint lista os saldos acumulados de cobranças.</p>
-<h3 id='requisicao-http-29'>Requisição HTTP</h3>
+<h3 id='requisicao-http-31'>Requisição HTTP</h3>
 <p><code>GET https://sandbox.easypagamentos.com.br/api/v1/reports/invoices/balances?startDate=2019-04-02&amp;endDate=2019-04-30</code></p>
 <h3 id='parametros-query-6'>Parâmetros Query</h3>
 <table><thead>
