@@ -225,7 +225,7 @@
                     <a href="#api-easypag-v1" class="toc-h2 toc-link" data-title="API EasyPag v1">API EasyPag v1</a>
                   </li>
                   <li>
-                    <a href="#ambientes-de-desenvolvimento" class="toc-h2 toc-link" data-title="Ambientes de Desenvolvimento">Ambientes de Desenvolvimento</a>
+                    <a href="#ambientes-da-api" class="toc-h2 toc-link" data-title="Ambientes da API">Ambientes da API</a>
                   </li>
               </ul>
           </li>
@@ -290,9 +290,6 @@
             <a href="#cobrancas-boletos" class="toc-h1 toc-link" data-title="Cobranças (Boletos)">Cobranças (Boletos)</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#atencao-cpf-cnpj-para-teste-em-sandbox" class="toc-h2 toc-link" data-title="[Atenção] CPF/CNPJ para teste em Sandbox">[Atenção] CPF/CNPJ para teste em Sandbox</a>
-                  </li>
-                  <li>
                     <a href="#status-de-cobranca" class="toc-h2 toc-link" data-title="Status de Cobrança">Status de Cobrança</a>
                   </li>
                   <li>
@@ -308,15 +305,6 @@
                     <a href="#criar-uma-cobranca-com-cliente-avulso" class="toc-h2 toc-link" data-title="Criar uma cobrança com cliente avulso">Criar uma cobrança com cliente avulso</a>
                   </li>
                   <li>
-                    <a href="#criar-um-carne" class="toc-h2 toc-link" data-title="Criar um carnê">Criar um carnê</a>
-                  </li>
-                  <li>
-                    <a href="#listar-todos-os-carnes" class="toc-h2 toc-link" data-title="Listar todos os carnês">Listar todos os carnês</a>
-                  </li>
-                  <li>
-                    <a href="#listar-todas-as-cobrancas-de-um-carne" class="toc-h2 toc-link" data-title="Listar todas as cobranças de um carnê">Listar todas as cobranças de um carnê</a>
-                  </li>
-                  <li>
                     <a href="#atualizar-uma-cobranca" class="toc-h2 toc-link" data-title="Atualizar uma cobrança">Atualizar uma cobrança</a>
                   </li>
                   <li>
@@ -327,6 +315,32 @@
                   </li>
                   <li>
                     <a href="#reenviar-uma-cobranca" class="toc-h2 toc-link" data-title="Reenviar uma cobrança">Reenviar uma cobrança</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#cobrancas-carnes" class="toc-h1 toc-link" data-title="Cobranças (Carnês)">Cobranças (Carnês)</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#status-de-carne" class="toc-h2 toc-link" data-title="Status de Carnê">Status de Carnê</a>
+                  </li>
+                  <li>
+                    <a href="#listar-todos-os-carnes" class="toc-h2 toc-link" data-title="Listar todos os carnês">Listar todos os carnês</a>
+                  </li>
+                  <li>
+                    <a href="#listar-um-carne" class="toc-h2 toc-link" data-title="Listar um carnê">Listar um carnê</a>
+                  </li>
+                  <li>
+                    <a href="#criar-um-carne" class="toc-h2 toc-link" data-title="Criar um carnê">Criar um carnê</a>
+                  </li>
+                  <li>
+                    <a href="#listar-todas-as-cobrancas-de-um-carne" class="toc-h2 toc-link" data-title="Listar todas as cobranças de um carnê">Listar todas as cobranças de um carnê</a>
+                  </li>
+                  <li>
+                    <a href="#cancelar-um-carne" class="toc-h2 toc-link" data-title="Cancelar um carnê">Cancelar um carnê</a>
+                  </li>
+                  <li>
+                    <a href="#visualizar-carne" class="toc-h2 toc-link" data-title="Visualizar carnê">Visualizar carnê</a>
                   </li>
               </ul>
           </li>
@@ -426,28 +440,30 @@
       <div class="content">
         <h1 id='introducao'>Introdução</h1><h2 id='api-easypag-v1'>API EasyPag v1</h2>
 <p>Integre seu software e tenha acesso às funcionalidades do Easypag, de forma simples e prática, com API moderna e respostas rápidas.</p>
-<h2 id='ambientes-de-desenvolvimento'>Ambientes de Desenvolvimento</h2>
-<aside class="notice">
-É importante validar e testar sua integração em ambiente Sandbox, antes de utilizar o ambiente de Produção.
-</aside>
+<h2 id='ambientes-da-api'>Ambientes da API</h2>
+<p>Ao utilizar a API, cerfique-se de:</p>
 
-<aside class="notice">
-É obrigatório a utilização de conexão segura (https) em todos os endpoints. 
-</aside>
+<ul>
+<li>Validar e testar sua integração em ambiente Sandbox, antes de utilizar o ambiente de Produção.</li>
+<li>Utilizar conexão segura (https) em todos as urls/endpoints.</li>
+</ul>
 
 <table><thead>
 <tr>
-<th>Parâmetro</th>
+<th>Ambiente</th>
+<th>URL</th>
 <th>Descrição</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>Sandbox</td>
 <td>https://sandbox.easypagamentos.com.br/api/v1</td>
+<td>Ambiente para testes e homologação</td>
 </tr>
 <tr>
 <td>Produção</td>
 <td>https://app.easypagamentos.com.br/api/v1</td>
+<td>Ambiente de produção</td>
 </tr>
 </tbody></table>
 <h1 id='autenticacao'>Autenticação</h1><h2 id='basic'>Basic</h2>
@@ -589,9 +605,6 @@
         </span><span class="s2">"expiration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"send"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
           </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12:00:00"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"overdue"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"send"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"types"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1033,7 +1046,7 @@ Você pode informar apenas os parâmetros que deseja atualizar.
 </tr>
 <tr>
 <td>reference</td>
-<td>Referência externa do cliente</td>
+<td>Referência externa do cliente, para controle do seu sistema.</td>
 <td>String</td>
 <td>Não</td>
 </tr>
@@ -1178,7 +1191,7 @@ Você pode informar apenas os parâmetros que deseja atualizar.
 </tr>
 <tr>
 <td>reference</td>
-<td>Referência externa do cliente</td>
+<td>Referência externa do cliente, para controle do seu sistema.</td>
 <td>String</td>
 <td>Não</td>
 </tr>
@@ -1272,43 +1285,7 @@ Você pode informar apenas os parâmetros que deseja atualizar.
 <td>Sim</td>
 </tr>
 </tbody></table>
-<h1 id='cobrancas-boletos'>Cobranças (Boletos)</h1><h2 id='atencao-cpf-cnpj-para-teste-em-sandbox'>[Atenção] CPF/CNPJ para teste em Sandbox</h2>
-<aside class="notice">
-Para testar a criação de cobranças com boletos registrados no ambiente Sandbox, é necessário utilizar um CPF ou CNPJ de teste que esteja listado abaixo, ao informar os dados do cliente na requisição.
-</aside>
-
-<table><thead>
-<tr>
-<th>CPF para testes</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>63600121111</td>
-</tr>
-<tr>
-<td>98851481911</td>
-</tr>
-<tr>
-<td>99227435824</td>
-</tr>
-</tbody></table>
-
-<table><thead>
-<tr>
-<th>CNPJ para testes</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>48486841000187</td>
-</tr>
-<tr>
-<td>17826555000190</td>
-</tr>
-<tr>
-<td>94462856000122</td>
-</tr>
-</tbody></table>
-<h2 id='status-de-cobranca'>Status de Cobrança</h2>
+<h1 id='cobrancas-boletos'>Cobranças (Boletos)</h1><h2 id='status-de-cobranca'>Status de Cobrança</h2>
 <p>O parâmetro <code>payment.status</code>, retornado no objeto de resposta, contém o status do pagamento da cobrança.</p>
 
 <table><thead>
@@ -1441,9 +1418,6 @@ Para testar a criação de cobranças com boletos registrados no ambiente Sandbo
           </span><span class="s2">"expiration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"send"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
             </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12:00:00"</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="s2">"overdue"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"send"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"types"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1535,9 +1509,6 @@ Para testar a criação de cobranças com boletos registrados no ambiente Sandbo
           </span><span class="s2">"expiration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"send"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
             </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12:00:00"</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="s2">"overdue"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"send"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"types"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1724,9 +1695,6 @@ Para testar a criação de cobranças com boletos registrados no ambiente Sandbo
       </span><span class="s2">"expiration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"send"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"08:00:00"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"overdue"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"send"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"types"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1825,9 +1793,6 @@ Para testar a criação de cobranças com boletos registrados no ambiente Sandbo
       </span><span class="s2">"expiration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"send"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"08:00:00"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"overdue"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"send"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"types"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1933,9 +1898,6 @@ Para testar a criação de cobranças com boletos registrados no ambiente Sandbo
       </span><span class="s2">"expiration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"send"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"08:00:00"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"overdue"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"send"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"types"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1974,6 +1936,12 @@ Para testar a criação de cobranças com boletos registrados no ambiente Sandbo
 <td>Data de vencimento no formato ISO: YYYY-MM-DD. A data deve ser igual ou posterior a data atual</td>
 <td>String</td>
 <td>Sim</td>
+</tr>
+<tr>
+<td>reference</td>
+<td>Referência externa da cobrança, para controle do seu sistema.</td>
+<td>String</td>
+<td>Não</td>
 </tr>
 <tr>
 <td>items</td>
@@ -2186,18 +2154,6 @@ Para testar a criação de cobranças com boletos registrados no ambiente Sandbo
 <td>Não</td>
 </tr>
 <tr>
-<td>notifications.overdue</td>
-<td>Objeto de lembrete de cobrança vencida</td>
-<td>Object</td>
-<td>Não</td>
-</tr>
-<tr>
-<td>notifications.overdue.send</td>
-<td>Define se o lembrete deve ser enviado, caso a cobrança esteja atrasada. Default: true</td>
-<td>Boolean</td>
-<td>Não</td>
-</tr>
-<tr>
 <td>instructionsMsg</td>
 <td>Instruções de pagamento que constará no boleto. Deve conter no máximo 100 caracteres</td>
 <td>String</td>
@@ -2282,9 +2238,6 @@ Para testar a criação de cobranças com boletos registrados no ambiente Sandbo
       </span><span class="s2">"expiration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"send"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"08:00:00"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"overdue"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"send"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"types"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2390,9 +2343,6 @@ Para testar a criação de cobranças com boletos registrados no ambiente Sandbo
       </span><span class="s2">"expiration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"send"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"08:00:00"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"overdue"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"send"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"types"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2431,6 +2381,12 @@ Para testar a criação de cobranças com boletos registrados no ambiente Sandbo
 <td>Data de vencimento no formato ISO: YYYY-MM-DD. A data deve ser igual ou posterior a data atual</td>
 <td>String</td>
 <td>Sim</td>
+</tr>
+<tr>
+<td>reference</td>
+<td>Referência externa da cobrança, para controle do seu sistema.</td>
+<td>String</td>
+<td>Não</td>
 </tr>
 <tr>
 <td>items</td>
@@ -2715,18 +2671,6 @@ Para testar a criação de cobranças com boletos registrados no ambiente Sandbo
 <td>Não</td>
 </tr>
 <tr>
-<td>notifications.overdue</td>
-<td>Objeto de lembrete de cobrança vencida</td>
-<td>Object</td>
-<td>Não</td>
-</tr>
-<tr>
-<td>notifications.overdue.send</td>
-<td>Define se o lembrete deve ser enviado, caso a cobrança esteja atrasada. Default: true</td>
-<td>Boolean</td>
-<td>Não</td>
-</tr>
-<tr>
 <td>instructionsMsg</td>
 <td>Instruções de pagamento que constará no boleto. Deve conter no máximo 100 caracteres</td>
 <td>String</td>
@@ -2739,258 +2683,7 @@ Para testar a criação de cobranças com boletos registrados no ambiente Sandbo
 <td>Não</td>
 </tr>
 </tbody></table>
-<h2 id='criar-um-carne'>Criar um carnê</h2>
-<blockquote>
-<p>Requisição</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"dueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-30"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"interest"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"percentage"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"fine"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"percentage"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"lateDays"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Item de Teste"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="err">//</span><span class="w"> </span><span class="err">Recorrência</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="mi">12</span><span class="w"> </span><span class="err">parcelas</span><span class="w"> </span><span class="err">por</span><span class="w"> </span><span class="err">carnê.</span><span class="w">
-  </span><span class="err">//</span><span class="w"> </span><span class="err">As</span><span class="w"> </span><span class="err">parcelas</span><span class="w"> </span><span class="err">geradas</span><span class="w"> </span><span class="err">tem</span><span class="w"> </span><span class="err">as</span><span class="w"> </span><span class="err">datas</span><span class="w"> </span><span class="err">de</span><span class="w"> </span><span class="err">vencimento</span><span class="p">,</span><span class="w"> </span><span class="err">multa</span><span class="w"> </span><span class="err">e</span><span class="w"> </span><span class="err">descontos</span><span class="w">
-  </span><span class="err">//</span><span class="w"> </span><span class="err">incrementados</span><span class="w"> </span><span class="err">em</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="err">dias</span><span class="p">,</span><span class="w"> </span><span class="err">sucessivamente.</span><span class="w">
-  </span><span class="s2">"recurrence"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"repeat"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="err">//</span><span class="w"> </span><span class="err">Pode-se</span><span class="w"> </span><span class="err">utilizar</span><span class="w"> </span><span class="err">o</span><span class="w"> </span><span class="err">ID</span><span class="w"> </span><span class="err">do</span><span class="w"> </span><span class="err">cliente</span><span class="w"> </span><span class="err">ou</span><span class="w"> </span><span class="err">os</span><span class="w"> </span><span class="err">dados</span><span class="w"> </span><span class="err">avulsos.</span><span class="w">
-  </span><span class="s2">"customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"03f7f73f-617d-4d4d-845a-7d464a7d8011"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<blockquote>
-<p>Resposta</p>
-</blockquote>
-<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">201</span> <span class="ne">Created</span>
-</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1060d867-c529-4852-b183-4fd474ecd812"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"dueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-30"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"paidAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"paidAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"720ceeec-148b-46a0-8abf-21d5b2de4681"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Item de Teste"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-22T17:33:35.000Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-22T17:33:35.000Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"invoiceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1060d867-c529-4852-b183-4fd474ecd812"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="s2">"lastMessageEvent"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"lastDateMessageEvent"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"interest"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"percentage"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"fine"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"lateDays"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fineStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-11-06"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"percentage"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"João da Silva"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"joao@email.com"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5511988515697"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"doc"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cpf"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"29458917000"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"cep"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60135222"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"uf"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CE"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fortaleza"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"area"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dionísio Torres"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rua Marcondes Pereira"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"addressLine2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Prox dionísio Torres"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"streetNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1381"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"notifications"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"sendOnCreate"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"reminders"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"cc"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"before"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"send"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"days"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06:00:00"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"after"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"send"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"days"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06:00:00"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"expiration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"send"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06:00:00"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"overdue"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"send"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"types"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"sms"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"whatsapp"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"recurrence"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="err">//</span><span class="w"> </span><span class="err">ID</span><span class="w"> </span><span class="err">da</span><span class="w"> </span><span class="err">Recorrência.</span><span class="w">
-    </span><span class="err">//</span><span class="w"> </span><span class="err">Pode</span><span class="w"> </span><span class="err">ser</span><span class="w"> </span><span class="err">utilizada</span><span class="w"> </span><span class="err">para</span><span class="w"> </span><span class="err">consultar</span><span class="w"> </span><span class="err">o</span><span class="w"> </span><span class="err">carnê</span><span class="w"> </span><span class="err">e</span><span class="w"> </span><span class="err">todas</span><span class="w"> </span><span class="err">as</span><span class="w"> </span><span class="err">cobranças</span><span class="w"> </span><span class="err">geradas.</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"49143944-38f8-4112-97ac-0c68602214d6"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-22T17:33:35.000Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-22T17:33:35.000Z"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"invoiceUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sandbox.easypagamentos.com.br"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aguardando pagamento"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"events"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8afd9586-1035-4e1f-bfd5-a56d070c2482"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INVOICE.CREATED"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-22T17:33:35.000Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-22T17:33:35.000Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"invoiceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1060d867-c529-4852-b183-4fd474ecd812"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-22T17:33:35.000Z"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-22T17:33:35.000Z"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>Este endpoint cria um carnê com recorrência simples a partir do mesmo endpoint de cobranças. São utilizados aqui os mesmos dados e opções de criação das cobranças informados anteriormente. Você pode gerar um carnê apenas adicionando o objeto &quot;recurrence&quot;, conforme informado abaixo.</p>
-<h3 id='requisicao-http-15'>Requisição HTTP</h3>
-<p><code>POST https://sandbox.easypagamentos.com.br/api/v1/invoices</code></p>
-
-<aside class="notice">
-Você pode utilizar os mesmos dados e opções de criar cobranças, adicionando apenas os dados abaixo para indicar que se trata de um carnê. Você receberá o id da recorrência na resposta, que poderá utilizar para consultar todas as cobranças geradas pelo carnê.
-</aside>
-<h3 id='parametros-body-7'>Parâmetros Body</h3>
-<table><thead>
-<tr>
-<th>Parâmetro</th>
-<th>Descrição</th>
-<th>Tipo</th>
-<th>Obrigatório</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>recurrence</td>
-<td>Objeto de recorrência</td>
-<td>Object</td>
-<td>Sim (Para carnê)</td>
-</tr>
-<tr>
-<td>recurrence.repeat</td>
-<td>Número de parcelas a serem geradas com base no primeiro vencimento. Valores aceitos: 2 a 12.</td>
-<td>Integer</td>
-<td>Sim (Para carnê)</td>
-</tr>
-</tbody></table>
-<h2 id='listar-todos-os-carnes'>Listar todos os carnês</h2>
-<blockquote>
-<p>Resposta</p>
-</blockquote>
-<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">Ok</span>
-</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"pagesTotal"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12dc010f-f3ab-4e86-aff4-6c4cc12423b0"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"repeat"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-22T17:23:39.000Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-22T17:23:39.000Z"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4b8de2ce-8396-42d4-987f-871762a32a6a"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"repeat"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-22T16:58:49.000Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-22T16:58:49.000Z"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eaf4a9a5-ac38-4e06-9466-170373bcec75"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"repeat"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-22T17:19:31.000Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-22T17:19:31.000Z"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>Este endpoint lista todos carnês de cobranças.</p>
-<h3 id='requisicao-http-16'>Requisição HTTP</h3>
-<p><code>GET https://sandbox.easypagamentos.com.br/api/v1/recurrences</code></p>
-<h2 id='listar-todas-as-cobrancas-de-um-carne'>Listar todas as cobranças de um carnê</h2>
-<p>Este endpoint lista todas as cobranças de um carnê.</p>
-
-<p><code>GET https://sandbox.easypagamentos.com.br/api/v1/recurrences/:id/invoices</code></p>
-<h3 id='parametros-url-8'>Parâmetros URL</h3>
-<table><thead>
-<tr>
-<th>Parâmetro</th>
-<th>Descrição</th>
-<th>Obrigatório</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>O ID da recorrência</td>
-<td>Sim</td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p>Resposta</p>
-</blockquote>
-<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">Ok</span>
-</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"pagesTotal"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12dc010f-f3ab-4e86-aff4-6c4cc12423b0"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"repeat"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-22T17:23:39.000Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-22T17:23:39.000Z"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4b8de2ce-8396-42d4-987f-871762a32a6a"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"repeat"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-22T16:58:49.000Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-22T16:58:49.000Z"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eaf4a9a5-ac38-4e06-9466-170373bcec75"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"repeat"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-22T17:19:31.000Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-22T17:19:31.000Z"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre><h2 id='atualizar-uma-cobranca'>Atualizar uma cobrança</h2>
+<h2 id='atualizar-uma-cobranca'>Atualizar uma cobrança</h2>
 <blockquote>
 <p>Requisição</p>
 </blockquote>
@@ -3076,9 +2769,9 @@ Você pode utilizar os mesmos dados e opções de criar cobranças, adicionando 
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Este atualiza data de vencimento de uma cobrança.</p>
-<h3 id='requisicao-http-17'>Requisição HTTP</h3>
+<h3 id='requisicao-http-15'>Requisição HTTP</h3>
 <p><code>PUT https://sandbox.easypagamentos.com.br/api/v1/invoices/:id</code></p>
-<h3 id='parametros-url-9'>Parâmetros URL</h3>
+<h3 id='parametros-url-8'>Parâmetros URL</h3>
 <table><thead>
 <tr>
 <th>Parâmetro</th>
@@ -3092,7 +2785,7 @@ Você pode utilizar os mesmos dados e opções de criar cobranças, adicionando 
 <td>Sim</td>
 </tr>
 </tbody></table>
-<h3 id='parametros-body-8'>Parâmetros Body</h3>
+<h3 id='parametros-body-7'>Parâmetros Body</h3>
 <table><thead>
 <tr>
 <th>Parâmetro</th>
@@ -3252,18 +2945,6 @@ Você pode utilizar os mesmos dados e opções de criar cobranças, adicionando 
 <td>Não</td>
 </tr>
 <tr>
-<td>notifications.overdue</td>
-<td>Objeto de lembrete de cobrança vencida</td>
-<td>Object</td>
-<td>Não</td>
-</tr>
-<tr>
-<td>notifications.overdue.send</td>
-<td>Define se o lembrete deve ser enviado, caso a cobrança esteja atrasada. Default: true</td>
-<td>Boolean</td>
-<td>Não</td>
-</tr>
-<tr>
 <td>instructionsMsg</td>
 <td>Instruções de pagamento que constará no boleto. Deve conter no máximo 100 caracteres</td>
 <td>String</td>
@@ -3283,9 +2964,9 @@ Você pode utilizar os mesmos dados e opções de criar cobranças, adicionando 
 <pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">Ok</span>
 </code></pre>
 <p>Este endpoint cancela uma cobrança.</p>
-<h3 id='requisicao-http-18'>Requisição HTTP</h3>
+<h3 id='requisicao-http-16'>Requisição HTTP</h3>
 <p><code>POST https://sandbox.easypagamentos.com.br/api/v1/invoices/:id/cancel</code></p>
-<h3 id='parametros-url-10'>Parâmetros URL</h3>
+<h3 id='parametros-url-9'>Parâmetros URL</h3>
 <table><thead>
 <tr>
 <th>Parâmetro</th>
@@ -3306,9 +2987,9 @@ Você pode utilizar os mesmos dados e opções de criar cobranças, adicionando 
 <pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">Ok</span>
 </code></pre>
 <p>Este endpoint renderiza o arquivo pdf do boleto de uma cobrança.</p>
-<h3 id='requisicao-http-19'>Requisição HTTP</h3>
+<h3 id='requisicao-http-17'>Requisição HTTP</h3>
 <p><code>GET https://sandbox.easypagamentos.com.br/api/v1/invoices/:id/view/boleto</code></p>
-<h3 id='parametros-url-11'>Parâmetros URL</h3>
+<h3 id='parametros-url-10'>Parâmetros URL</h3>
 <table><thead>
 <tr>
 <th>Parâmetro</th>
@@ -3329,9 +3010,9 @@ Você pode utilizar os mesmos dados e opções de criar cobranças, adicionando 
 <pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">Ok</span>
 </code></pre>
 <p>Este endpoint reenvia uma cobrança.</p>
-<h3 id='requisicao-http-20'>Requisição HTTP</h3>
+<h3 id='requisicao-http-18'>Requisição HTTP</h3>
 <p><code>GET https://sandbox.easypagamentos.com.br/api/v1/invoices/:id/resend</code></p>
-<h3 id='parametros-url-12'>Parâmetros URL</h3>
+<h3 id='parametros-url-11'>Parâmetros URL</h3>
 <table><thead>
 <tr>
 <th>Parâmetro</th>
@@ -3342,6 +3023,501 @@ Você pode utilizar os mesmos dados e opções de criar cobranças, adicionando 
 <tr>
 <td>ID</td>
 <td>O ID da cobrança</td>
+<td>Sim</td>
+</tr>
+</tbody></table>
+<h1 id='cobrancas-carnes'>Cobranças (Carnês)</h1><h2 id='status-de-carne'>Status de Carnê</h2>
+<p>O parâmetro <code>payment.status</code>, retornado no objeto de resposta, contém o status do carnê.</p>
+
+<table><thead>
+<tr>
+<th>Cód. Status</th>
+<th>Status</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>1</td>
+<td>Ativo</td>
+<td>Status inicial quando o carnê é criado.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Cancelado</td>
+<td>Os carnês que foram manualmente cancelados têm as suas cobranças canceladas e os seus boletos automaticamente baixados.</td>
+</tr>
+</tbody></table>
+<h2 id='listar-todos-os-carnes'>Listar todos os carnês</h2>
+<blockquote>
+<p>Resposta</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">Ok</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"pagesTotal"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cfb4f19d-a204-4934-9da6-04d35879d6a0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"repeat"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PESSOA JURÍDICA LTDA"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"exemplo@email.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"559999999999"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"doc"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cnpj"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20238189000162"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"cep"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13064110"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"uf"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SP"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Campinas"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"area"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Parque Santa Bárbara"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rua Armando Rizzoni"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"addressLine2"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"streetNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9999"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-31T13:14:10.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-31T13:14:10.000Z"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='parametros-query-3'>Parâmetros Query</h3>
+<table><thead>
+<tr>
+<th>Parâmetro</th>
+<th>Descrição</th>
+<th>Obrigatório</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>page</td>
+<td>Número da página a ser retornada</td>
+<td>Não</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>Número itens a ser retornado por página. Valor mínimo: 1, valor máximo: 100. Caso não seja infromado, será aplicado o valor default de 100 itens</td>
+<td>Não</td>
+</tr>
+<tr>
+<td>sortBy</td>
+<td>Um hash contendo na chave, o nome do campo para ordenação e o valor DESC ou ASC para descendente e ascendente, respectivamente. Exemplos: sortBy[dueDate]=DESC, sortBy[amount]=DESC, sortBy[customerName]=ASC, sortBy[createdAt]=ASC, sortBy[updatedAt]=DESC</td>
+<td>Não</td>
+</tr>
+<tr>
+<td>createdAtFrom</td>
+<td>Filtra registros criados a partir da data passada no parâmetro. Formato (AAAA-MM-DDThh:mm:ss)</td>
+<td>Não</td>
+</tr>
+<tr>
+<td>createdAtTo</td>
+<td>Filtra registros criados até esta data passada no parâmetro. Formato (AAAA-MM-DDThh:mm:ss)</td>
+<td>Não</td>
+</tr>
+<tr>
+<td>updatedSince</td>
+<td>Filtra registros atualizados desde o valor passado no parâmetro. Formato (AAAA-MM-DDThh:mm:ss)</td>
+<td>Não</td>
+</tr>
+</tbody></table>
+
+<p>Este endpoint lista todos carnês de cobranças.</p>
+<h3 id='requisicao-http-19'>Requisição HTTP</h3>
+<p><code>GET https://sandbox.easypagamentos.com.br/api/v1/recurrences</code></p>
+<h2 id='listar-um-carne'>Listar um carnê</h2>
+<blockquote>
+<p>Resposta</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">Ok</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cfb4f19d-a204-4934-9da6-04d35879d6a0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"repeat"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PESSOA JURÍDICA LTDA"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"exemplo@email.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"559999999999"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"doc"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cnpj"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20238189000162"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"cep"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13064110"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"uf"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SP"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Campinas"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"area"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Parque Santa Bárbara"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rua Armando Rizzoni"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"addressLine2"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"streetNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9999"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-31T13:14:10.000Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-31T13:14:10.000Z"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Este endpoint lista um carnê.</p>
+<h3 id='requisicao-http-20'>Requisição HTTP</h3>
+<p><code>GET https://sandbox.easypagamentos.com.br/api/v1/recurrences/:id</code></p>
+<h3 id='parametros-url-12'>Parâmetros URL</h3>
+<table><thead>
+<tr>
+<th>Parâmetro</th>
+<th>Descrição</th>
+<th>Obrigatório</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>O ID do carnê</td>
+<td>Sim</td>
+</tr>
+</tbody></table>
+<h2 id='criar-um-carne'>Criar um carnê</h2>
+<blockquote>
+<p>Requisição</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"dueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-30"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"interest"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"percentage"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"fine"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"percentage"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"lateDays"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Item de Teste"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="err">//</span><span class="w"> </span><span class="err">Recorrência</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="mi">12</span><span class="w"> </span><span class="err">parcelas</span><span class="w"> </span><span class="err">por</span><span class="w"> </span><span class="err">carnê.</span><span class="w">
+  </span><span class="err">//</span><span class="w"> </span><span class="err">As</span><span class="w"> </span><span class="err">parcelas</span><span class="w"> </span><span class="err">geradas</span><span class="w"> </span><span class="err">tem</span><span class="w"> </span><span class="err">as</span><span class="w"> </span><span class="err">datas</span><span class="w"> </span><span class="err">de</span><span class="w"> </span><span class="err">vencimento</span><span class="p">,</span><span class="w"> </span><span class="err">multa</span><span class="w"> </span><span class="err">e</span><span class="w"> </span><span class="err">descontos</span><span class="w">
+  </span><span class="err">//</span><span class="w"> </span><span class="err">incrementados</span><span class="w"> </span><span class="err">em</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="err">dias</span><span class="p">,</span><span class="w"> </span><span class="err">sucessivamente.</span><span class="w">
+  </span><span class="s2">"recurrence"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"repeat"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="err">//</span><span class="w"> </span><span class="err">Pode-se</span><span class="w"> </span><span class="err">utilizar</span><span class="w"> </span><span class="err">o</span><span class="w"> </span><span class="err">ID</span><span class="w"> </span><span class="err">do</span><span class="w"> </span><span class="err">cliente</span><span class="w"> </span><span class="err">ou</span><span class="w"> </span><span class="err">os</span><span class="w"> </span><span class="err">dados</span><span class="w"> </span><span class="err">avulsos.</span><span class="w">
+  </span><span class="s2">"customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"03f7f73f-617d-4d4d-845a-7d464a7d8011"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Resposta</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">201</span> <span class="ne">Created</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1060d867-c529-4852-b183-4fd474ecd812"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"dueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-30"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"paidAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"paidAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"720ceeec-148b-46a0-8abf-21d5b2de4681"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Item de Teste"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-22T17:33:35.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-22T17:33:35.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"invoiceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1060d867-c529-4852-b183-4fd474ecd812"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"lastMessageEvent"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"lastDateMessageEvent"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"interest"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"percentage"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"fine"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"lateDays"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"fineStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-11-06"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"percentage"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"João da Silva"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"joao@email.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5511988515697"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"doc"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cpf"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"29458917000"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"cep"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60135222"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"uf"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CE"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fortaleza"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"area"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dionísio Torres"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rua Marcondes Pereira"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"addressLine2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Prox dionísio Torres"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"streetNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1381"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"notifications"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"sendOnCreate"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"reminders"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"cc"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"before"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"send"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"days"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06:00:00"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"after"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"send"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"days"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06:00:00"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"expiration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"send"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06:00:00"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"types"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sms"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"whatsapp"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"recurrence"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="err">//</span><span class="w"> </span><span class="err">ID</span><span class="w"> </span><span class="err">da</span><span class="w"> </span><span class="err">Recorrência.</span><span class="w">
+    </span><span class="err">//</span><span class="w"> </span><span class="err">Pode</span><span class="w"> </span><span class="err">ser</span><span class="w"> </span><span class="err">utilizada</span><span class="w"> </span><span class="err">para</span><span class="w"> </span><span class="err">consultar</span><span class="w"> </span><span class="err">o</span><span class="w"> </span><span class="err">carnê</span><span class="w"> </span><span class="err">e</span><span class="w"> </span><span class="err">todas</span><span class="w"> </span><span class="err">as</span><span class="w"> </span><span class="err">cobranças</span><span class="w"> </span><span class="err">geradas.</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"49143944-38f8-4112-97ac-0c68602214d6"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-22T17:33:35.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-22T17:33:35.000Z"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"invoiceUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sandbox.easypagamentos.com.br"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aguardando pagamento"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"events"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8afd9586-1035-4e1f-bfd5-a56d070c2482"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INVOICE.CREATED"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-22T17:33:35.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-22T17:33:35.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"invoiceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1060d867-c529-4852-b183-4fd474ecd812"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-22T17:33:35.000Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-22T17:33:35.000Z"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Este endpoint cria um carnê.</p>
+<h3 id='requisicao-http-21'>Requisição HTTP</h3>
+<p><code>POST https://sandbox.easypagamentos.com.br/api/v1/invoices</code></p>
+
+<aside class="notice">
+Você pode utilizar os mesmos dados e opções de criar cobranças, adicionando apenas os dados abaixo para indicar que se trata de um carnê. Você receberá o id da recorrência na resposta, que poderá utilizar para consultar todas as cobranças geradas pelo carnê.
+</aside>
+<h3 id='parametros-body-8'>Parâmetros Body</h3>
+<table><thead>
+<tr>
+<th>Parâmetro</th>
+<th>Descrição</th>
+<th>Tipo</th>
+<th>Obrigatório</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>recurrence</td>
+<td>Objeto de recorrência</td>
+<td>Object</td>
+<td>Sim (Para carnê)</td>
+</tr>
+<tr>
+<td>recurrence.repeat</td>
+<td>Número de parcelas a serem geradas com base no primeiro vencimento. Valores aceitos: 2 a 12.</td>
+<td>Integer</td>
+<td>Sim (Para carnê)</td>
+</tr>
+</tbody></table>
+<h2 id='listar-todas-as-cobrancas-de-um-carne'>Listar todas as cobranças de um carnê</h2>
+<p>Este endpoint lista todas as cobranças de um carnê.</p>
+
+<p><code>GET https://sandbox.easypagamentos.com.br/api/v1/recurrences/:id/invoices</code></p>
+<h3 id='parametros-url-13'>Parâmetros URL</h3>
+<table><thead>
+<tr>
+<th>Parâmetro</th>
+<th>Descrição</th>
+<th>Obrigatório</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>O ID do carnê</td>
+<td>Sim</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Resposta</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">Ok</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"819bb3e4-3421-4208-9809-2a3c475a98b6"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"dueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-31"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"paidAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"paidAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b7788ccb-9c01-4125-a57e-036c67d4b058"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ITEM DE TESTE"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-31T13:14:10.000Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-31T13:14:10.000Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"invoiceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"819bb3e4-3421-4208-9809-2a3c475a98b6"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"lastMessageEvent"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"lastDateMessageEvent"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"invoiceMessageEvent"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PESSOA JURÍDICA LTDA"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"exemplo@email.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"559999999999"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"doc"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cnpj"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20238189000162"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"cep"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13064110"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"uf"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SP"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Campinas"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"area"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Parque Santa Bárbara"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rua Armando Rizzoni"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"streetNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9999"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"notifications"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"sendOnCreate"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"reminders"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"cc"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"before"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"send"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"days"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06:00:00"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"after"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"send"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"days"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06:00:00"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"expiration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"send"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06:00:00"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"types"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sms"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"whatsapp"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"recurrence"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cfb4f19d-a204-4934-9da6-04d35879d6a0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-31T13:14:10.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-31T13:14:10.000Z"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"invoiceUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sandbox.easypagamentos.com.br"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"payment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aguardando pagamento"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"events"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4fcd7c08-44e3-4536-80fa-b32aa0678cb2"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INVOICE.CREATED"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-31T13:14:10.000Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-31T13:14:10.000Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"invoiceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"819bb3e4-3421-4208-9809-2a3c475a98b6"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-31T13:14:10.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-31T13:14:10.000Z"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre><h2 id='cancelar-um-carne'>Cancelar um carnê</h2>
+<blockquote>
+<p>Resultado</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">Ok</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cfb4f19d-a204-4934-9da6-04d35879d6a0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"repeat"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PESSOA JURÍDICA LTDA"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"exemplo@email.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"559999999999"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"doc"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cnpj"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20238189000162"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"cep"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13064110"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"uf"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SP"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Campinas"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"area"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Parque Santa Bárbara"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rua Armando Rizzoni"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"addressLine2"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"streetNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9999"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-31T13:14:10.000Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-31T14:12:33.000Z"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Este endpoint cancela um carnê e suas cobranças.</p>
+<h3 id='requisicao-http-22'>Requisição HTTP</h3>
+<p><code>POST https://sandbox.easypagamentos.com.br/api/v1/recurrences/:id/cancel</code></p>
+<h3 id='parametros-url-14'>Parâmetros URL</h3>
+<table><thead>
+<tr>
+<th>Parâmetro</th>
+<th>Descrição</th>
+<th>Obrigatório</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>O ID do carnê</td>
+<td>Sim</td>
+</tr>
+</tbody></table>
+<h2 id='visualizar-carne'>Visualizar carnê</h2>
+<blockquote>
+<p>Resultado</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">Ok</span>
+</code></pre>
+<p>Este endpoint renderiza o arquivo pdf do carnê, contendo todos os boletos.</p>
+<h3 id='requisicao-http-23'>Requisição HTTP</h3>
+<p><code>GET https://sandbox.easypagamentos.com.br/api/v1/recurrences/:id/view/carne</code></p>
+<h3 id='parametros-url-15'>Parâmetros URL</h3>
+<table><thead>
+<tr>
+<th>Parâmetro</th>
+<th>Descrição</th>
+<th>Obrigatório</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>O ID do carnê a ser consultado</td>
 <td>Sim</td>
 </tr>
 </tbody></table>
@@ -3362,9 +3538,9 @@ Você pode utilizar os mesmos dados e opções de criar cobranças, adicionando 
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>Este endpoint lista as informações das instituições financeiras disponíveis.</p>
-<h3 id='requisicao-http-21'>Requisição HTTP</h3>
+<h3 id='requisicao-http-24'>Requisição HTTP</h3>
 <p><code>GET https://sandbox.easypagamentos.com.br/api/v1/banks?search=banco do brasil</code></p>
-<h3 id='parametros-query-3'>Parâmetros Query</h3>
+<h3 id='parametros-query-4'>Parâmetros Query</h3>
 <table><thead>
 <tr>
 <th>Parâmetro</th>
@@ -3415,7 +3591,7 @@ Você pode utilizar os mesmos dados e opções de criar cobranças, adicionando 
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>Este endpoint lista as contas bancárias cadastradas do usuário.</p>
-<h3 id='requisicao-http-22'>Requisição HTTP</h3>
+<h3 id='requisicao-http-25'>Requisição HTTP</h3>
 <p><code>GET https://sandbox.easypagamentos.com.br/api/v1/bank-accounts</code></p>
 <h2 id='listar-uma-conta-bancaria'>Listar uma conta bancária</h2>
 <blockquote>
@@ -3452,9 +3628,9 @@ Você pode utilizar os mesmos dados e opções de criar cobranças, adicionando 
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Este endpoint lista uma conta bancária do usuário.</p>
-<h3 id='requisicao-http-23'>Requisição HTTP</h3>
+<h3 id='requisicao-http-26'>Requisição HTTP</h3>
 <p><code>GET https://sandbox.easypagamentos.com.br/api/v1/bank-accounts/:id</code></p>
-<h3 id='parametros-url-13'>Parâmetros URL</h3>
+<h3 id='parametros-url-16'>Parâmetros URL</h3>
 <table><thead>
 <tr>
 <th>Parâmetro</th>
@@ -3523,7 +3699,7 @@ Você pode utilizar os mesmos dados e opções de criar cobranças, adicionando 
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Este endpoint cria uma conta bancária.</p>
-<h3 id='requisicao-http-24'>Requisição HTTP</h3>
+<h3 id='requisicao-http-27'>Requisição HTTP</h3>
 <p><code>POST https://sandbox.easypagamentos.com.br/api/v1/bank-accounts</code></p>
 <h3 id='parametros-body-9'>Parâmetros Body</h3>
 <table><thead>
@@ -3602,9 +3778,9 @@ Você pode utilizar os mesmos dados e opções de criar cobranças, adicionando 
 <pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">204</span> <span class="ne">No Content</span>
 </code></pre>
 <p>Este endpoint exclui uma conta bancária do usuário.</p>
-<h3 id='requisicao-http-25'>Requisição HTTP</h3>
+<h3 id='requisicao-http-28'>Requisição HTTP</h3>
 <p><code>DELETE https://sandbox.easypagamentos.com.br/api/v1/bank-accounts/:id</code></p>
-<h3 id='parametros-url-14'>Parâmetros URL</h3>
+<h3 id='parametros-url-17'>Parâmetros URL</h3>
 <table><thead>
 <tr>
 <th>Parâmetro</th>
@@ -3695,9 +3871,9 @@ Você pode utilizar os mesmos dados e opções de criar cobranças, adicionando 
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Este endpoint lista todos os resgates do usuário.</p>
-<h3 id='requisicao-http-26'>Requisição HTTP</h3>
+<h3 id='requisicao-http-29'>Requisição HTTP</h3>
 <p><code>GET https://sandbox.easypagamentos.com.br/api/v1/redemptions</code></p>
-<h3 id='parametros-query-4'>Parâmetros Query</h3>
+<h3 id='parametros-query-5'>Parâmetros Query</h3>
 <table><thead>
 <tr>
 <th>Parâmetro</th>
@@ -3790,9 +3966,9 @@ Você pode utilizar os mesmos dados e opções de criar cobranças, adicionando 
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Este endpoint lista um resgate do usuário.</p>
-<h3 id='requisicao-http-27'>Requisição HTTP</h3>
+<h3 id='requisicao-http-30'>Requisição HTTP</h3>
 <p><code>GET https://sandbox.easypagamentos.com.br/api/v1/bank-accounts/:id</code></p>
-<h3 id='parametros-url-15'>Parâmetros URL</h3>
+<h3 id='parametros-url-18'>Parâmetros URL</h3>
 <table><thead>
 <tr>
 <th>Parâmetro</th>
@@ -3855,7 +4031,7 @@ Você pode utilizar os mesmos dados e opções de criar cobranças, adicionando 
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Este endpoint cria um resgate do saldo da conta.</p>
-<h3 id='requisicao-http-28'>Requisição HTTP</h3>
+<h3 id='requisicao-http-31'>Requisição HTTP</h3>
 <p><code>POST https://sandbox.easypagamentos.com.br/api/v1/redemptions</code></p>
 <h3 id='parametros-body-10'>Parâmetros Body</h3>
 <table><thead>
@@ -3906,7 +4082,7 @@ Você pode utilizar os mesmos dados e opções de criar cobranças, adicionando 
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Este endpoint lista os saldos do usuário.</p>
-<h3 id='requisicao-http-29'>Requisição HTTP</h3>
+<h3 id='requisicao-http-32'>Requisição HTTP</h3>
 <p><code>GET https://sandbox.easypagamentos.com.br/api/v1/balances</code></p>
 <h1 id='extratos'>Extratos</h1><h2 id='tipos-de-transacao'>Tipos de Transação</h2>
 <p>O parâmetro <code>type</code>, retornado no objeto de resposta, contém o tipo de transação no extrato.</p>
@@ -3965,9 +4141,9 @@ Você pode utilizar os mesmos dados e opções de criar cobranças, adicionando 
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Este endpoint lista os extratos do usuário.</p>
-<h3 id='requisicao-http-30'>Requisição HTTP</h3>
+<h3 id='requisicao-http-33'>Requisição HTTP</h3>
 <p><code>GET https://sandbox.easypagamentos.com.br/api/v1/statements</code></p>
-<h3 id='parametros-query-5'>Parâmetros Query</h3>
+<h3 id='parametros-query-6'>Parâmetros Query</h3>
 <table><thead>
 <tr>
 <th>Parâmetro</th>
@@ -4059,9 +4235,9 @@ Você pode utilizar os mesmos dados e opções de criar cobranças, adicionando 
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Este endpoint lista os saldos acumulados de cobranças.</p>
-<h3 id='requisicao-http-31'>Requisição HTTP</h3>
+<h3 id='requisicao-http-34'>Requisição HTTP</h3>
 <p><code>GET https://sandbox.easypagamentos.com.br/api/v1/reports/invoices/balances?startDate=2019-04-02&amp;endDate=2019-04-30</code></p>
-<h3 id='parametros-query-6'>Parâmetros Query</h3>
+<h3 id='parametros-query-7'>Parâmetros Query</h3>
 <table><thead>
 <tr>
 <th>Parâmetro</th>
